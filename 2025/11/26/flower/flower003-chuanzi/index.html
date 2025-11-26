@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>串子太多导致连呼吸都像在串了 | Marine-Reptile</title><meta name="author" content="marine_reptile"><meta name="copyright" content="marine_reptile"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="thupc求组队，个人水平：NOI 2025 金牌，cf rating 2630，目前水平 div 3 四个题。对队友的水平没太大预期，别太高就行，有意者私聊 我承认我能理解这个三个条件看起来很割裂，其反差感一个比一个强，强到你让我来看别人发这个，我也会觉得别人在串。但不可否认的是，这的确是我的真实立体水平——前者是我的巅峰水平，次者是 acm 圈比较公认的成绩指标，后者是最近能真实反映我水平的唯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="串子太多导致连呼吸都像在串了">
+<meta property="og:url" content="http://example.com/2025/11/26/flower/flower003-chuanzi/index.html">
+<meta property="og:site_name" content="Marine-Reptile">
+<meta property="og:description" content="thupc求组队，个人水平：NOI 2025 金牌，cf rating 2630，目前水平 div 3 四个题。对队友的水平没太大预期，别太高就行，有意者私聊 我承认我能理解这个三个条件看起来很割裂，其反差感一个比一个强，强到你让我来看别人发这个，我也会觉得别人在串。但不可否认的是，这的确是我的真实立体水平——前者是我的巅峰水平，次者是 acm 圈比较公认的成绩指标，后者是最近能真实反映我水平的唯">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2025-11-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-11-26T12:29:46.745Z">
+<meta property="article:author" content="marine_reptile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "串子太多导致连呼吸都像在串了",
+  "url": "http://example.com/2025/11/26/flower/flower003-chuanzi/",
+  "image": "http://example.com/img/avatar.jpg",
+  "datePublished": "2025-11-25T16:00:00.000Z",
+  "dateModified": "2025-11-26T12:29:46.745Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "marine_reptile",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/11/26/flower/flower003-chuanzi/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3-b2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '串子太多导致连呼吸都像在串了',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Marine-Reptile</span></a><a class="nav-page-title" href="/"><span class="site-name">串子太多导致连呼吸都像在串了</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">串子太多导致连呼吸都像在串了</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-25T16:00:00.000Z" title="发表于 2025-11-26 00:00:00">2025-11-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-26T12:29:46.745Z" title="更新于 2025-11-26 20:29:46">2025-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%B2%9C%E8%8A%B1/">鲜花</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>thupc求组队，个人水平：<strong>NOI 2025 金牌，cf rating 2630，目前水平 div 3 四个题</strong>。对队友的水平没太大预期，别太高就行，有意者私聊</p>
+<p>我承认我能理解这个三个条件看起来很割裂，其反差感一个比一个强，强到你让我来看别人发这个，我也会觉得别人在串。但不可否认的是，这的确是我的真实立体水平——前者是我的巅峰水平，次者是 acm 圈比较公认的成绩指标，后者是最近能真实反映我水平的唯一比赛。</p>
+<p>但无论把这段话发在哪里，都会被认为是串子。而且这三个哪一个都不能隐去——隐去了金牌，认识我的人会觉得我在装弱；隐去了 cf rating，会被觉得是学 oi 的小朋友来秀优越感；隐去了 div 3 四个题，又容易匹配到水平太高的队友——说实话这个都无所谓了，毕竟我也不信我真就是 div 3 四个题的水平了，我在大部分地方发的时候也都隐去了这个。</p>
+<p>我只是说，“noi金牌”加“需要找队友”这两件事合起来，就直接被认定为串子了。有许多人给我的消息扣“拜谢”的表情，而只有我能看到的是这些人的相当一部分是串子，都是水平比我还高但仗着扣表情不会被公之于众处刑而肆无忌惮开串的熟人。</p>
+<p>说到底还是 OI 圈串子太多了，导致稍微有点水平的人干点什么都像是串。说不定很快就要演变成，原来金牌也需要训练吗，原来金牌也需要吃饭吗，你一定是在串了。非常抱歉的是，我也这么去揣测我身边的人，比如刚才的一段我就把给我扣表情包的所有人定性为了串子。</p>
+<p>串子横行和装弱文化显然脱不开干系，因为不装弱就像在串，所以不得不装弱。因为有水平的人想体验那种扮猪吃老虎的感觉，所以装弱开串的能力就成了必备工具。</p>
+<p>这篇闲话的目的不是批判 OI 圈的串子文化和装弱文化，毕竟这些东西不是我所能改变的，也不能咬定说它们不好。它们也不是和 OI 圈绑定的，如果暴论一点的话——这是人类的本性，人类的本性就是通过伪装弱小来规避竞争的敌意，又通过被识破的伪装来获取优越的快感。只是我们活在 OI 圈所以感觉 OI 圈里串子横行而已。有些东西我们自己都逃不开，只能顺其自然了。</p>
+<p>这篇闲话的目的是解释我真的不是在串，我真的想要 thupc 队友。</p>
+<p>thupc求组队，个人水平：<strong>NOI 2025 金牌，cf rating 2630，目前水平 div 3 四个题</strong>。对队友的水平没太大预期，别太高就行，有意者私聊。QQ：2824109535。如果需要更多关于我水平的信息，也可以私聊我。</p>
+<p>我真的想要两个 thupc 队友，这是我的核心诉求。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">marine_reptile</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/11/26/flower/flower003-chuanzi/">http://example.com/2025/11/26/flower/flower003-chuanzi/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">Marine-Reptile</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/11/23/tales/tales003-match/" title="世界大赛编年史"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">世界大赛编年史</div></div><div class="info-2"><div class="info-item-1">世界代码大赛：一种所有选手为给定的功能实现代码的计算机大赛，观众的投票将决定大赛的获奖人员，当出现平票时选手的代码正确性、完成时间、代码长度将作为进一步评判的依据。 世界背代码大赛：【世界代码大赛】的衍生产物。世界代码大赛的一百年举办历史中，在观众的投票下决出了众多的优秀代码。而【世界背代码大赛】的成立旨在于让这些美丽的代码得以被更多人铭记。【世界背代码大赛】的胜出者仍然由观众投票决定，如果平票，在最短时间内背出代码的选手将获得胜利，若选手用时相同，则将比较选手所背代码的完整度和正确性。 世界信息学大赛：【世界背代码大赛】的衍生产物。人们发现一些特殊的代码可以被用于解决实际问题。而【世界信息学大赛】就是在比拼背代码速度的基础上，额外要求选手明白如何骗分。【世界信息学大赛】是所有世界大赛中公平性最受质疑的，因为其比赛全程是黑盒测试，没有任何评委和观众投票的环节，故受到过许多参赛选手的抗议。 世界信息学测评大赛：【世界信息学大赛】的衍生产物，比赛内容是如何设计【世界信息学大赛】的黑盒测试。选手们需要给出不同的黑盒测评系统的方案，然后由观众投票选出最优秀的评测系统用于【世界信息学大赛】...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">marine_reptile</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/26/flower/flower003-chuanzi/" title="串子太多导致连呼吸都像在串了">串子太多导致连呼吸都像在串了</a><time datetime="2025-11-25T16:00:00.000Z" title="发表于 2025-11-26 00:00:00">2025-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/23/tales/tales003-match/" title="世界大赛编年史">世界大赛编年史</a><time datetime="2025-11-22T16:00:00.000Z" title="发表于 2025-11-23 00:00:00">2025-11-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/22/songs/song001-luo/" title="洛水之心">洛水之心</a><time datetime="2025-11-21T16:00:00.000Z" title="发表于 2025-11-22 00:00:00">2025-11-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/21/flower/flower001-wings/" title="不忍折去她的双翼">不忍折去她的双翼</a><time datetime="2025-11-20T16:00:00.000Z" title="发表于 2025-11-21 00:00:00">2025-11-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/21/tales/tales002-wizard/" title="大巫医">大巫医</a><time datetime="2025-11-20T16:00:00.000Z" title="发表于 2025-11-21 00:00:00">2025-11-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/background.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By marine_reptile</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3-b2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3-b2"></script><script src="/js/main.js?v=5.5.3-b2"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
