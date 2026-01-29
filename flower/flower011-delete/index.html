@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>卡牌删除 | Marine-Reptile</title><meta name="author" content="marine_reptile"><meta name="copyright" content="marine_reptile"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="似乎在杀戮尖塔的背景设定里，每一张卡牌都是一份角色原本的回忆。在一开始，四位爬塔者都是带着完整的记忆前来征服尖塔，然后被打到记忆破碎，记忆碎片掉满尖塔。之后，他们以失忆者的身份重新攀登，一点点捡回自己关于战斗的技巧，最终杀戮这座尖塔的心脏。这时候就产生了一个问题——如果他们原本带着完全体的记忆前来，又是怎么输掉的？那你想想，观者大脑里若是充斥着【幸运一击】【精神护盾】之类与诅咒无异的记忆，一回合摸">
+<meta property="og:type" content="article">
+<meta property="og:title" content="卡牌删除">
+<meta property="og:url" content="http://marine-reptile.github.io/flower/flower011-delete/index.html">
+<meta property="og:site_name" content="Marine-Reptile">
+<meta property="og:description" content="似乎在杀戮尖塔的背景设定里，每一张卡牌都是一份角色原本的回忆。在一开始，四位爬塔者都是带着完整的记忆前来征服尖塔，然后被打到记忆破碎，记忆碎片掉满尖塔。之后，他们以失忆者的身份重新攀登，一点点捡回自己关于战斗的技巧，最终杀戮这座尖塔的心脏。这时候就产生了一个问题——如果他们原本带着完全体的记忆前来，又是怎么输掉的？那你想想，观者大脑里若是充斥着【幸运一击】【精神护盾】之类与诅咒无异的记忆，一回合摸">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://marine-reptile.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2026-01-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-29T10:27:37.614Z">
+<meta property="article:author" content="marine_reptile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://marine-reptile.github.io/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "卡牌删除",
+  "url": "http://marine-reptile.github.io/flower/flower011-delete/",
+  "image": "http://marine-reptile.github.io/img/avatar.jpg",
+  "datePublished": "2026-01-28T16:00:00.000Z",
+  "dateModified": "2026-01-29T10:27:37.614Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "marine_reptile",
+      "url": "http://marine-reptile.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://marine-reptile.github.io/flower/flower011-delete/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3-b2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '卡牌删除',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Marine-Reptile</span></a><a class="nav-page-title" href="/"><span class="site-name">卡牌删除</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">卡牌删除</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-01-28T16:00:00.000Z" title="发表于 2026-01-29 00:00:00">2026-01-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-01-29T10:27:37.614Z" title="更新于 2026-01-29 18:27:37">2026-01-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%B2%9C%E8%8A%B1/">鲜花</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>似乎在杀戮尖塔的背景设定里，每一张卡牌都是一份角色原本的回忆。在一开始，四位爬塔者都是带着完整的记忆前来征服尖塔，然后被打到记忆破碎，记忆碎片掉满尖塔。之后，他们以失忆者的身份重新攀登，一点点捡回自己关于战斗的技巧，最终杀戮这座尖塔的心脏。这时候就产生了一个问题——如果他们原本带着完全体的记忆前来，又是怎么输掉的？那你想想，观者大脑里若是充斥着【幸运一击】【精神护盾】之类与诅咒无异的记忆，一回合摸五打五，这能赢也算是见鬼了。</p>
+<p>在征服高塔的过程中失去记忆，却好像是一场针对自己的净化。先在失败中进行一次完全的失去，再一点点将自己身上有用的部分拾起来，拼凑起来。精简自己的记忆，争取小巧玲珑且精致规整的战斗思路，爆发出强大的战斗力。是的，如果只剩下【猛虎下山】【心灵堡垒】【内心宁静】【暴怒】，那么尖塔上下，除了观者的那位前辈以及最终的腐化之心，怕是没有一合之敌。这也是为什么我们喜欢删牌，喜欢挑剔地选取。把一切都忘记，只留下制胜的终极法宝的姿态，也是她最强大、最令人敬畏的样子。</p>
+<p>然而在战斗结束之后，离开尖塔的胜利者们，比起那个刚踏入尖塔的自己，又是何种模样呢？为了胜利，我们已然放弃了很多本属于自己的事物。</p>
+<p>今天在设想，如果我是一个杀戮尖塔的角色，那么我的生命中有哪些值得被做成卡牌，被抉择拾起或者丢弃的记忆。首先被决定的一定是自己的竞赛生涯。我像机器人吗？不，我不是机器人，我在考场的启动速度还是很不错的，但续航不足。这显然和机器人完全相反。我像猎人吗？不，我的成长历程远远没有突然无敌的那种感觉，更是转得不那么明白，毫无运转时候的那种自然华丽。像观者就算了，我这样的人怎么可能像观者呢。</p>
+<p>思来想去，感觉自己像战士，一个四层没上限的战士，总是靠着每一场关键战斗稀里糊涂地打出了无限或者小循环来取胜。本来已经做好了死在腐化之心的准备，却从无色药里开出一张【净化】，险而又险地烧干了卡组，【放血】【狂怒】【剑柄打击】打小循环。中局觉得自己运气不错胜券在握，细算却发现自己数值依然不够，在丝血面对心脏连击时准备认命，最后惊讶地发现：铜制鳞片伤害特别高。</p>
+<p>看来我像铁甲战士，为了胜利向恶魔献祭了鲜血的战士。</p>
+<hr>
+<p>有时候很羡慕机器人那样的人啊，这不是个笑话。先不论在杀戮尖塔中的强度，就说这一类型的人——机器人在尖塔桌游可是最强的角色呢。机器人启动慢，但成长能力强，长线战斗能力优秀。最重要的是，机器人的卡组有许多配合方式，可以容许玩家抓取较大的卡组。机器人的玩法也偏向于防杀，只要稳住防御，缓慢提升自己的输出水平就可以取得胜利。</p>
+<p>我是羡慕这一点的。我并不喜欢不断精简卡组直到可以运转乃至无限，不惜一切代价地删牌，就像在追求胜利的过程中一点一点地放弃了我们原本可能热爱的事物。我更渴望成为略显驳杂而广泛的灵魂。我想完成的一切，终究什么都舍不得放下的啊。不愿意舍弃儿时的玩具、成长的印迹、抛弃了我的人，又怎么能愿意舍弃自己曾经为之付出过热情与青春的过往呢？</p>
+<p>NOI2024 day2 的那天晚上 zxb 在写第二天的演讲稿，ylx 也在准备演讲。ylx 的演讲主题叫做《一命矣》，讲述他所期望的生命的深度。那时我憧憬，如果明年我能拿到金牌，我就学 zxb 临时报名和赶制一份演讲稿，然后给 ylx 的演讲进行一次狗尾续貂。我的演讲会叫《双生花》，表达生命的广度，我对星空、生命、历史、文字，一切曾被我短暂放弃的事物的热爱。</p>
+<p>然而命运的玩笑是，NOI2025 day2 的晚上我无法确切得知我的奖项，在惊喜和恐惧交杂的时间里，我把演讲的事抛之脑后了。但现在想来，这其实是好事。那时候的我，本质上是冲动的、狂妄的，而且是没有真正回想起那个热爱着许多事物的自己的。我讲不出属于我的《双生花》，我连自己都没有说服过。</p>
+<p>为了胜利，我们当然是删牌大于一切，我们会摒弃我们的私心杂念，去删除那些记忆，去舍弃那些热望，去烧毁那些无用之物，在一场场战斗中运转起来，严谨地取得必将得到的胜利。但如果胜利是我们游戏的唯一目的，那么杀戮尖塔应该只剩一个叫观者的角色，然后所有玩家记住，除了若干张强卡以外一张都不拿，最强的【猛虎下山】必须拿，这个游戏就结束了。</p>
+<p>但杀戮尖塔不是这样的，它终究是个游戏，玩家们最喜欢的角色也依然是故障机器人，那个总是被卡启动，鬼抽被开幕雷击，伤痕累累地在尖塔里攀爬的故障机器人。它可能不强大，可能离胜利最远，可能到处都流传着鸡煲笑话。但它的生命最符合一个游戏的意义，每一次旅程都是用生命中幸运地相逢的一切，去拼凑出自己独特的精彩。</p>
+<hr>
+<p>说到 NOI2024，就不得不提到我的第一局杀戮尖塔。day2 结束之后，大家去 gzy 的宿舍里庆祝 NOI 的结束，以及大部分人 OI 生涯的落幕。而我可能也是那里唯一仅获得了铜牌的选手，却也是唯二还要继续攀爬的选手之一。</p>
+<p>在那里我搞砸了一整把三国杀，真的不是因为我在瞎玩，而是我小时候学习的规则是错误的。但大家也都让着我，毕竟我的奖项最低，可能在别人的眼里最需要安慰。百无聊赖之际 gzy 在我的电脑上下载了杀戮尖塔，并指导我开始我的第一局游戏。第一局游戏是战士，也只能是战士。</p>
+<p>我对那一局游戏只有两张牌有深刻的印象，一张是【震荡波】，gzy 和我说，【震荡波】的虚弱可以削弱敌人的攻击，我问如果抽不上来它怎么办。结果我说完之后，言出法随地，下一个遗物就是【瓶装闪电】，可以让【震荡波】在第一回合必然上手。于是他说：你看这个就可以解决抽不上来的问题。然后我就对遗物有了错误的印象：拿越多遗物，就能在第一回合获得越多确定的卡牌。</p>
+<p>另一张就是【祭品】。知道这个游戏的血量是宝贵的全局资源之后，我本能地抗拒任何扣除自己血量的行为。我的游戏思路活像个机器人，防不住就继续防，一点血都不能多掉，所以第一时间忽略了【祭品】。这时候 gzy 却告诉我【祭品】是非常强大的卡，因为它虽然会减少自己的血量，却能大幅度地增强自己的运转能力。只要更快地把敌人杀死，就能最根本地减少血量的消耗。</p>
+<p>通过【祭品】我明白了战士是一个怎样的角色。为了更强大的力量，更快地杀死敌人，更可能地通往胜利，可以为此戕害自己。血量不是珍贵的资源，而是战斗的筹码，和游戏内的其他任何资源都没有本质的区别，随时可以用来交换一场胜利。我于是喜欢上了战士，我喜欢这种对自己无比冷酷的形象。</p>
+<p>第一次游戏我死在了【第一勇士】，大家的聚会也结束。回到宿舍之后，我却在被窝里摸黑重开了一次，依然是战士。这一次我在天亮时击败了【觉醒者】取得了胜利，好像 NOI 失利带来的悲伤和负面都被这一场胜利抹去了。五点钟重庆的天刚蒙蒙亮，我一个人走出了宿舍楼呼吸新鲜的空气，不是以失败，而是胜利者的姿态。NOI2025 的同一天，我也起得很早，一个人去颁奖的会堂寻找座位的安排，以确认自己的奖项。扪心自问，那时的我不如那一场游戏胜利后的自己痛快，也不如那时的自己释怀。</p>
+<p>有趣的是，NOI2025 的 day2 晚上我带着 xqw 启动了他的第一局杀戮尖塔，和我不同，他在这场游戏拿到的关键牌是【火焰屏障】。【火焰屏障】拥有优秀的防御数值，并且自带反甲，可以完美地在防御之余进行输出。于是 xqw 说出了“要是多来几张火焰屏障不是无敌了吗”，并获得了和我的第一场杀戮尖塔截然相反的体验，就像我们第一次尝试杀戮尖塔时截然相反的身份和心境一样。</p>
+<p>或许有些人是不需要放弃的，不需要为了胜利舍弃太多的。但更多时候我们必须为了胜利，在神龛下祈祷遗忘那些平庸的记忆，饮下甘甜的泉水净化那些不洁的诅咒。可是，我们能否求取地更多一点呢？哪怕，多留下一点属于自己的东西呢？</p>
+<p>删牌大于一切，是的，这是对的。可这句话的真正大前提是胜利大于一切，认为没有胜利的一切都是空谈。可这样的胜利真的是我们所期望的胜利吗？在追求胜利的路上，哪怕多保留一点点原来的自己，是否都能让自己的胜利或坏灭增添一分别样的光色？我不知道，我是有想要留下的记忆的，是有不愿舍弃的热望的，是有无论受到多少伤害都不会背弃的理念的。</p>
+<p>至少也要让看似胜利的自己，比所谓失败的我有更美丽从容的姿态吧。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://marine-reptile.github.io">marine_reptile</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://marine-reptile.github.io/flower/flower011-delete/">http://marine-reptile.github.io/flower/flower011-delete/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://marine-reptile.github.io" target="_blank">Marine-Reptile</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/flower/flower010-rain/" title="归天雨"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">归天雨</div></div><div class="info-2"><div class="info-item-1">当我抬头看见雨水淅淅沥沥地洒落的时候，我会迷茫地任由它们凌乱我的思绪。曾经自己会测量东来季风的速度，用来计算这淋湿着我的雨云在多久以前飘过她的头顶。然而雨不会在意我的思念，只会义无反顾地顺着它该有的途径奔向地面。 于是我怔怔地想着，雨为什么从天空到地面呢？什么时候，让雨回归天空呢？ 我当然知晓雨水会以弥散的蒸汽的形式在天空重新化为积蓄的水汽，可是我不想要这样，这样的回归，就如同我想要永生，你却和我说死去的我的物质将重新化作生命一样。 那就让雨回归天空吧。  小时候的人其实是不明白什么是死抑或生的。小时候我对死亡的想象始源于祭祀时候被要求在坟墓面前磕头，而坟墓没有我想象的那样庞大，甚至只是一个青石盖板的盒子。我于是会想——人死了就到了那里面吗？ 我就越想越怕了。如果被关在那样一个盒子里，我能做什么呢？我什么都做不了啊。被关在一个黑黑的盒子里，没有身体也没有眼睛，我的视野将永远是黑色的，我的耳畔将永远是死寂的。我不能动弹，不能了解外界，除了思考以外什么都做不到，那样会有多么恐怖呢。 没有人管我的时候，我就会不断地想死去之后到底会怎么样。我清楚地记得有一次大人们谈论又有人死去的时候，家...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">marine_reptile</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/marine-reptile"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="/h" target="_blank" title=""><i></i></a><a class="social-icon" href="/t" target="_blank" title=""><i class="1"></i></a><a class="social-icon" href="/t" target="_blank" title=""><i class="2"></i></a><a class="social-icon" href="/p" target="_blank" title=""><i class="3"></i></a><a class="social-icon" href="/s" target="_blank" title=""><i class="4"></i></a><a class="social-icon" href="/" target="_blank" title=""><i class="5"></i></a><a class="social-icon" href="/" target="_blank" title=""><i class="6"></i></a><a class="social-icon" href="/g" target="_blank" title=""><i class="7"></i></a><a class="social-icon" href="/i" target="_blank" title=""><i class="8"></i></a><a class="social-icon" href="/t" target="_blank" title=""><i class="9"></i></a><a class="social-icon" href="/h" target="_blank" title=""><i class="10"></i></a><a class="social-icon" href="/u" target="_blank" title=""><i class="11"></i></a><a class="social-icon" href="/b" target="_blank" title=""><i class="12"></i></a><a class="social-icon" href="/." target="_blank" title=""><i class="13"></i></a><a class="social-icon" href="/c" target="_blank" title=""><i class="14"></i></a><a class="social-icon" href="/o" target="_blank" title=""><i class="15"></i></a><a class="social-icon" href="/m" target="_blank" title=""><i class="16"></i></a><a class="social-icon" href="/" target="_blank" title=""><i class="17"></i></a><a class="social-icon" href="/m" target="_blank" title=""><i class="18"></i></a><a class="social-icon" href="/a" target="_blank" title=""><i class="19"></i></a><a class="social-icon" href="/r" target="_blank" title=""><i class="20"></i></a><a class="social-icon" href="/i" target="_blank" title=""><i class="21"></i></a><a class="social-icon" href="/n" target="_blank" title=""><i class="22"></i></a><a class="social-icon" href="/e" target="_blank" title=""><i class="23"></i></a><a class="social-icon" href="/-" target="_blank" title=""><i class="24"></i></a><a class="social-icon" href="/r" target="_blank" title=""><i class="25"></i></a><a class="social-icon" href="/e" target="_blank" title=""><i class="26"></i></a><a class="social-icon" href="/p" target="_blank" title=""><i class="27"></i></a><a class="social-icon" href="/t" target="_blank" title=""><i class="28"></i></a><a class="social-icon" href="/i" target="_blank" title=""><i class="29"></i></a><a class="social-icon" href="/l" target="_blank" title=""><i class="30"></i></a><a class="social-icon" href="/e" target="_blank" title=""><i class="31"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/flower/flower011-delete/" title="卡牌删除">卡牌删除</a><time datetime="2026-01-28T16:00:00.000Z" title="发表于 2026-01-29 00:00:00">2026-01-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/flower/flower010-rain/" title="归天雨">归天雨</a><time datetime="2026-01-18T16:00:00.000Z" title="发表于 2026-01-19 00:00:00">2026-01-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/flower/flower009-cat/" title="杂谈之猫">杂谈之猫</a><time datetime="2026-01-10T16:00:00.000Z" title="发表于 2026-01-11 00:00:00">2026-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/flower/flower008-rat/" title="杂谈之老鼠">杂谈之老鼠</a><time datetime="2026-01-03T16:00:00.000Z" title="发表于 2026-01-04 00:00:00">2026-01-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/flower/flower007-flying/" title="飞离我">飞离我</a><time datetime="2025-12-28T16:00:00.000Z" title="发表于 2025-12-29 00:00:00">2025-12-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/background.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By marine_reptile</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3-b2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3-b2"></script><script src="/js/main.js?v=5.5.3-b2"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
