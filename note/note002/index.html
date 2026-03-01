@@ -1,0 +1,570 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>组合数学课程笔记 | Marine-Reptile</title><meta name="author" content="marine_reptile"><meta name="copyright" content="marine_reptile"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、组合数学知识框架组合数学的严格定义是非常困难的，其设计的内容广泛，分类困难，体系性较弱。不过，我们可以把组合数学按照问题、工具、对象三种方法进行分类，例如图论，就是按照研究对象分出的内容。 而别的分支，例如代数组合学，就是对一系列的代数对象，如生成函数、反演等进行研究。 我们认为最科学的分类方法是根据组合数学所解决的问题进行分类，分为组合计数、组合存在性、组合设计和组合优化四大类。 组合计数问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组合数学课程笔记">
+<meta property="og:url" content="http://marine-reptile.github.io/note/note002/index.html">
+<meta property="og:site_name" content="Marine-Reptile">
+<meta property="og:description" content="一、组合数学知识框架组合数学的严格定义是非常困难的，其设计的内容广泛，分类困难，体系性较弱。不过，我们可以把组合数学按照问题、工具、对象三种方法进行分类，例如图论，就是按照研究对象分出的内容。 而别的分支，例如代数组合学，就是对一系列的代数对象，如生成函数、反演等进行研究。 我们认为最科学的分类方法是根据组合数学所解决的问题进行分类，分为组合计数、组合存在性、组合设计和组合优化四大类。 组合计数问">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://marine-reptile.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2026-03-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-01T16:11:50.933Z">
+<meta property="article:author" content="marine_reptile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://marine-reptile.github.io/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "组合数学课程笔记",
+  "url": "http://marine-reptile.github.io/note/note002/",
+  "image": "http://marine-reptile.github.io/img/avatar.jpg",
+  "datePublished": "2026-03-01T16:00:00.000Z",
+  "dateModified": "2026-03-01T16:11:50.933Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "marine_reptile",
+      "url": "http://marine-reptile.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://marine-reptile.github.io/note/note002/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3-b2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '组合数学课程笔记',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Marine-Reptile</span></a><a class="nav-page-title" href="/"><span class="site-name">组合数学课程笔记</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">组合数学课程笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-01T16:00:00.000Z" title="发表于 2026-03-02 00:00:00">2026-03-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-01T16:11:50.933Z" title="更新于 2026-03-02 00:11:50">2026-03-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="一、组合数学知识框架"><a href="#一、组合数学知识框架" class="headerlink" title="一、组合数学知识框架"></a>一、组合数学知识框架</h2><p>组合数学的严格定义是非常困难的，其设计的内容广泛，分类困难，体系性较弱。不过，我们可以把组合数学按照问题、工具、对象三种方法进行分类，例如图论，就是按照研究对象分出的内容。</p>
+<p>而别的分支，例如代数组合学，就是对一系列的代数对象，如生成函数、反演等进行研究。</p>
+<p>我们认为最科学的分类方法是根据组合数学所解决的问题进行分类，分为组合计数、组合存在性、组合设计和组合优化四大类。</p>
+<h3 id="组合计数问题"><a href="#组合计数问题" class="headerlink" title="组合计数问题"></a>组合计数问题</h3><p>组合计数的本质是对含有一些条件的有穷结构（解空间）进行计数，是组合数学最古典的内容。对它的研究占到组合数学的很大篇幅。</p>
+<h3 id="组合存在性问题"><a href="#组合存在性问题" class="headerlink" title="组合存在性问题"></a>组合存在性问题</h3><p>组合存在性是求问满足条件的有穷结构是否存在。它研究的对象往往是最复杂的。而组合存在性下有两个比较特殊的重要分支。</p>
+<h4 id="极值组合学"><a href="#极值组合学" class="headerlink" title="极值组合学"></a>极值组合学</h4><p>极值组合学研究的内容是给定条件的有穷结构在某个定义下的最大或最小结构有多大&#x2F;多小。</p>
+<p>极值组合学的对于计算机理论科学的意义更多不在于具体算法的分析，而在于从理论层面上对一大类具有相同特点的算法分析性质。这是非常伟大的。</p>
+<ul>
+<li><p>$\text{k-3 free}$ 问题，即一个没有三元环的图最多有多少条边？我们可以很轻易的发现，二分图是满足没有三元环的，不仅没有三元环，连奇环都没有。但是奇环的条件太过宽泛了，是否存在限制更加强大（没有 $\text{3-tuple}$  但是有奇环存在的更大的图呢？</p>
+</li>
+<li><p>基于比较的排序算法的最少比较次数。这是非常经典的极值组合学问题。判定树的证明决定了任何基于比较的排序算法都至少要比较 $\Theta(n\log n)$ 次。</p>
+</li>
+<li><p>基于比较的并行排序算法的排序层数下界问题。虽然人类在很长的时间内都只发现了高于 $\log^2 n$ 的做法，但是通过一般的证明方法会得到下界是大于等于 $\log n$ 的。所以有人在收紧下界的方向进行了很多的研究，直到有人发现了新的 $\log n$ 的做法。</p>
+</li>
+<li><p>${$ 在 $\text{OI}$ 学习的过程种，我们也记忆过一些通过这类方法证明出的结论，例如 $\text{DAG}$ 上给定两点的连通性是难以有低于 $O(|V|+|E|)$ 的做法 $}$</p>
+</li>
+</ul>
+<p>极值组合学探讨的方向是人类对于自然科学的认知边界，其意义在于对我们认知自然科学的工具的效用性有了较为准确的认识。</p>
+<h4 id="拉姆塞问题"><a href="#拉姆塞问题" class="headerlink" title="拉姆塞问题"></a>拉姆塞问题</h4><p>拉姆塞问题来自 $\text{Ramsey}$ 定理。我们一般接触到的形式是“有六个人的聚会，至少有三个人互相认识或者不认识”。但是其本质是非常深刻的。它声明了任何有穷结构，只要规模大到一定地步，就一定包含某些确定的子结构或者局部存在某些确定的性质。</p>
+<ul>
+<li><p>二分查找真的是在有序序列（不使用额外空间）中确定给定元素存在性的最优办法吗？首先，我们可以证明二分查找已经是最优解了。但是，我们想要研究的问题是，对于无序的序列，能否进行类似的查找。而给定的结论是，假设我们的元素来自某个域 $\mathbb{U}$，那么只要 $\mathbb{U}$ 的规模大到一定程度，序列都是局部有序的。因此无论我们使用多强大的数据结构，在维护足够大规模的序列时，都一定要（或者等价于）进行了排序。但是在这一过程中，如果使用了额外的空间，哪怕只是一个位，都可能给上述的论证带来质的变化，因为我们就可以进行编码，从而得到更优的做法。</p>
+</li>
+<li><p>${$ “五连号问题”属于这类形式吗？：从 $786$ 个数字中选出 $203$ 个，虽然这些数字是无序的，但是存在五个连号的概率接近 $49%$。看上去符合大结构包含给定结构的形式，但是却不符合拉姆赛定理“一定存在这样结构”的形式。$}$</p>
+</li>
+<li><p>${$ “鸽笼原理”或者“抽屉原理”是否是拉姆塞定理的一种形式？因为当我们的物品比较少的时候，不一定会存在某个抽屉的数量达到一定量，但是当我们的物品够多，就可能存在至少有一个抽屉存着给定数量以上的物品。而物品和抽屉的比例越大，这个给定数量也会越大。符合拉姆塞定理“随结构的扩张而增加”和“一定存在”两个形式。$}$</p>
+</li>
+</ul>
+<p>拉姆塞定理的意义在于巨大的结构而带来的特殊性质。这些性质在小形式是是不存在的。这给了我们研究很多复杂问题的办法。</p>
+<h3 id="组合设计"><a href="#组合设计" class="headerlink" title="组合设计"></a>组合设计</h3><p>组合设计的内容就是，不仅要论证符合条件的有穷结构是否存在，还要给出特定的构造。例如编码论。但是组合设计的过程中，很多的方法不具有推广性。也就是很难建立体系和联系。</p>
+<h3 id="组合优化"><a href="#组合优化" class="headerlink" title="组合优化"></a>组合优化</h3><p>组合优化是更加偏向算法方面的。其研究的内容是找到某个解空间中某种意义下最好的解。</p>
+<ul>
+<li>$\text{matching theory}$ 匹配论，原始对偶现象。内容是最优类的问题在解空间中成对出现。例如，网络最大流和网络最小割就是一对对偶的最优化问题。它们在组合数学的深层有着相同的特殊性质。而二分图点覆盖和二分图最大匹配一类问题中，存在若干个不同方向的定理，如 $\text{Hall}$ 定理，这些若干个定理其实是等价的。这意味着我们可以把一个问题转化成另一个问题，求出另一个问题的最优解。${$ 在网络流模型中，这种转化问题到特定形式的形式非常多见。$}$</li>
+</ul>
+<h2 id="二、十二重计数法（初等计数）"><a href="#二、十二重计数法（初等计数）" class="headerlink" title="二、十二重计数法（初等计数）"></a>二、十二重计数法（初等计数）</h2><p>组合计数问题是组合数学中重要的最古典的分支。有人将组合计数问题归为 $12$ 个集合映射问题。但是其中有 $2$ 个是平凡的，所以我们只研究 $10$ 个。</p>
+<p>在数学上，严谨的定义是“从一个集合对另一个集合的映射的个数”。但是我们可以用更简单的方法定义它：把 $n$ 个苹果装进 $m$ 个盒子的方案数。</p>
+<p>首先，我们根据集合的性质来进行分类。对集合 $S$，如果在映射的过程中，我们令打乱 $S$ 中的数的顺序后得到的映射和原先的映射是等价的（也就是，在群的形式下，两个映射函数形成等价关系），我们就可以把 $S$ 中的数划分为同一个等价类，这时我们称 $S$ 中的元素是不区分的。也就是，所有的苹果 $&#x2F;$ 盒子都是相同的。因为有两个集合 $N$ 和 $M$，所以一共能分 $4$ 种。</p>
+<p>其次，我们按照映射的性质来分类，分为“不受限”“单射”和“满射”。也就是，每个盒子随便装、最多装一个、最少装一个。</p>
+<p>这样，我们列出一张 $3*4$ 的表，表示所有 $12$ 种问题。不过其中有 $2$ 个是平凡的。分别是 XI 和 VIII。</p>
+<table>
+<thead>
+<tr>
+<th align="center">$\mathrm{N}$</th>
+<th align="center">$\mathrm{M}$</th>
+<th align="center">不受限</th>
+<th align="center">单射</th>
+<th align="center">满射</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">区分</td>
+<td align="center">区分</td>
+<td align="center">$\text{I: Tuple}$</td>
+<td align="center">$\text{II: Permu}$</td>
+<td align="center">$\text{III: Stir}$</td>
+</tr>
+<tr>
+<td align="center">不区分</td>
+<td align="center">区分</td>
+<td align="center">$\text{IV: w-Comp}$</td>
+<td align="center">$\text{V: Binom}$</td>
+<td align="center">$\text{VI: Comp}$</td>
+</tr>
+<tr>
+<td align="center">区分</td>
+<td align="center">不区分</td>
+<td align="center">$\text{VII: Stir}$</td>
+<td align="center">$\text{VIII: Ordin}$</td>
+<td align="center">$\text{IX: Stir}$</td>
+</tr>
+<tr>
+<td align="center">不区分</td>
+<td align="center">不区分</td>
+<td align="center">$\text{X: GF}$</td>
+<td align="center">$\text{XI: Ordin}$</td>
+<td align="center">$\text{XII: GF}$</td>
+</tr>
+</tbody></table>
+<h3 id="计数公理"><a href="#计数公理" class="headerlink" title="计数公理"></a>计数公理</h3><h4 id="映射法则"><a href="#映射法则" class="headerlink" title="映射法则"></a>映射法则</h4><p>对于集合 $S$ 和 $T$，其中若存在映射 $f:S\rightarrow T$ 满足：</p>
+<ul>
+<li><p>$f$ 是单射，则 $|S|\le|T|$</p>
+</li>
+<li><p>$f$ 是满射，则 $|S|\ge|T|$</p>
+</li>
+<li><p><strong>$f$ 是双射，则 $|S|&#x3D;|T|$</strong></p>
+</li>
+</ul>
+<p>法则本身的内容只涉及第三条，剩余两条是补充的。其意义在于如果两个集合中的所有元素一一对应，则两者元素数量相同。</p>
+<p>实际上，双射法则常常出现在很多的定义中，</p>
+<h4 id="乘法法则"><a href="#乘法法则" class="headerlink" title="乘法法则"></a>乘法法则</h4><p>不同的代数对象有不同的乘法法则，例如生成函数中的乘法法则就和集合计数的乘法法则不同。</p>
+<p>两个集合的笛卡尔积 $S\times T$ 的定义是 ${(a,b)|a\in S,b\in T}$</p>
+<p>$|S\times T|&#x3D;|S|\cdot|T|$</p>
+<p>乘法法则的应用情形是比较好判断和容易使用的。</p>
+<h4 id="加法法则"><a href="#加法法则" class="headerlink" title="加法法则"></a>加法法则</h4><p>两个不相交的集合 $S$ 和 $T$，$|S\cup T|&#x3D;|S|+|T|$</p>
+<p>加法法则则不好运用，因为其满足的条件相较苛刻，应用情形难以直观看出，更具技巧性。</p>
+<h3 id="组合数"><a href="#组合数" class="headerlink" title="组合数"></a>组合数</h3><h4 id="子集总数"><a href="#子集总数" class="headerlink" title="子集总数"></a>子集总数</h4><p>组合数是有穷集合的子集。</p>
+<p>定义 $[n]$ 的幂集 $2^{[n]}&#x3D;{S|S\subseteq [n]}$</p>
+<p>我们证明 $|2^{[n]}|&#x3D;2^n$</p>
+<p>组合的证明方法是把 $S$ 表示为一个长 $n$ 的 $0&#x2F;1$ 特征向量（编码集合）。</p>
+<p>具体而言，对于 $i\in [n]$，如果 $i\in S$，则特征向量的这一位是 $1$，否则是 $0$。我们从而建立了特征向量和子集的双射。而特征向量是 ${0,1}^n$，根据乘法法则，就是 $2^n$</p>
+<p>或者，我们定义 $f(n)&#x3D;|2^{[n]}|$，然后把 $2^{[n]}$ 表示成 ${ S\subseteq [n]|n\in S}\cup{ S\subseteq [n]|n\notin S}$</p>
+<p>则前后无交集且存在双射，都是 $2^{[n-1]}$</p>
+<p>所以 $f(n)&#x3D;2f(n-1)$</p>
+<p>而且 $2^{\varnothing}&#x3D;1$ 是良定义的，所以 $f(n)&#x3D;|2^n|$</p>
+<p>现在我们在解的是比较简单的线性递推式，那么别的线性递推呢？例如 $f(n)&#x3D;a_1f(n-1)+a_2f(n-2)+\cdots+a_kf(n-k)+a_0$？</p>
+<p>这就需要使用生成函数的知识解决，例如我的<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jucason-xu/p/17117375.html" title="这篇博客">这篇博客</a>讲解了斐波那契数列的通项。</p>
+<h4 id="子集"><a href="#子集" class="headerlink" title="子集"></a>子集</h4><p>我们定义 $\text{k-uniform}$ 为 ${S\choose k}&#x3D;{T\subseteq S|\ |T|&#x3D;k}$。它涉及到 $\text{k-complete hypergraph}$ 的一些内容。</p>
+<h3 id="十二重计数法"><a href="#十二重计数法" class="headerlink" title="十二重计数法"></a>十二重计数法</h3><h4 id="text-I-Tuples"><a href="#text-I-Tuples" class="headerlink" title="$\text{I: Tuples}$"></a>$\text{I: Tuples}$</h4><p>我们定义 $[m]$ 是小于等于 $m$ 的正整数的集合，那么 $[m]&#x3D;{1,2,\cdots,m}$。</p>
+<p>根据乘法原则，它的 $n$ 次笛卡尔积 $[m]^n$ 的大小 $|[m]^n|$ 就是值域为 $[1,m]$ 的 $n$ 元组的个数。</p>
+<p>那么我们定义 $f:[n]\rightarrow [m]$，找到 $f$ 的真值向量 $(f(1),f(2),\cdots,f(n))$，这个向量的集合就和映射的集合建立了双射。同时它还和值域为 $[1,m]$ 的 $n$ 元组建立了双射。</p>
+<p>那么，映射的个数就是 $m^n$。</p>
+<h4 id="text-II-Permutation"><a href="#text-II-Permutation" class="headerlink" title="$\text{II: Permutation}$"></a>$\text{II: Permutation}$</h4><p>我们还是找到 $f$ 的真值向量 $(f(1),f(2),\cdots,f(n)$。但是因为是单射，所以 $(f(1),f(2),\cdots,f(n))$ 是一个排列 $\pi$，它是 $[m]^n$ 的一个子集。</p>
+<p>我们考虑别的方法，我们发现，确定第一位的时候有 $m$ 种，第二位有 $m-1$ 种……最终一共有 $m(m-1)(m-2)\cdots(m-n+1)$ 种。我们记作 $(m)_n$，或者 $m^{\underline{n}}$，也就是 $m$ 的 $n$ 次下降幂。</p>
+<p>至于严格论证，我们需要链式法则，它不包含于上述法则中，因为它是另一种积而非笛卡尔积，涉及条件概率。</p>
+<h4 id="text-III-Stirling"><a href="#text-III-Stirling" class="headerlink" title="$\text{III: Stirling}$"></a>$\text{III: Stirling}$</h4><p>先看 $\text{IX: Stirling}$</p>
+<p>然后，我们发现这是一个满射。满射具有什么样的性质呢？对于满射 $f:[n]\rightarrow [m]$，存在逆射 $f^{-1}$ 满足对任意的 $i\in [m]$，$f^{-1}(i)\neq \emptyset$ 并且 $f^{-1}(i)\cap f^{-1}(j)&#x3D;\emptyset$，$\bigcup f^{-1}(i)&#x3D;[n]$。我们发现，如果我们忽视 $f^{-1}(i)$ 之间的区别，它其实等价于一个 $n$ 划 $m$ 的集合划分问题。</p>
+<p>那么，假设我们找到了集合划分问题的一组解 $F&#x3D;{f^{-1}(1),\cdots,f^{-1}(m)}$，我们只要乘上一个 $\pi$，构成一个笛卡尔积集合 $(F,\pi)$，就和原来的映射构成一个双射，那么根据乘法原则，答案就是 $m!\begin{Bmatrix}n \\m\end{Bmatrix} $。</p>
+<h4 id="text-IV-weak-k-composition"><a href="#text-IV-weak-k-composition" class="headerlink" title="$\text{IV: weak k-composition}$"></a>$\text{IV: weak k-composition}$</h4><p>先看 $\text{VI: composition}$。</p>
+<p>然后，我们构造 $\text{IV}$ 到 $\text{VI}$ 的双射。在 $weak k-composition$ 的解决过程中，我们其实在求 $k&#x3D;m$ 元组满足$\sum x_i&#x3D;n,x_i\in \mathbb{N}$。和  $\text{k-composition}$ 唯一的不同就是允许有 $0$，那么我们就考虑把 $0$ 去掉，也就是构造双射 $\phi((x_1,x_2,\cdots,x_k))&#x3D;(x_1+1,x_2+1,\cdots,x_k+1)$。这 $k$ 个数的和是 $n+k$，而 $\ge 1$。两者的双射关系是显然的，则答案即为 $n+k$ 的 $k-composition$，即 $\binom{n+k-1}{k-1}$,也记作 $(\binom{n}{k})$。</p>
+<h4 id="text-V-Binom"><a href="#text-V-Binom" class="headerlink" title="$\text{V: Binom}$"></a>$\text{V: Binom}$</h4><p>我们知道，有序的 $k$ 元子集个数是 $(n)_k$（$by II)$，而对 $k$ 个不同元素的排列运算 $\pi$ 一共有 $k!$ 个。</p>
+<p>那么，我们假设集合 $n$ 的无序 $k$ 元子集的集合是 $\mathrm{R}$，而排列运算的集合是 $\pi$，那么构成的笛卡尔积集合 $(\mathrm{R},\pi)$ 和有序 $k$ 元子集 $\mathrm{R}$ 构成一个双射。</p>
+<p>那么，应用乘法原理和双射原理，得到 $|\mathrm{R}||\pi|&#x3D;|\mathrm{S}|$。解出 $|\mathrm{R}|&#x3D;\dfrac{(n)_k}{k!}$。</p>
+<p>我们就定义 $\binom{n}{k}&#x3D;|\mathrm{R}|&#x3D;\dfrac{n!}{k!(n-k)!}$，这就是组合数。</p>
+<ul>
+<li><p>$n$ 元集的所有子集 $S$ 到每个 $S$ 的补集形成双射，所以 $\binom{n}{k}&#x3D;\binom{n}{n-k}$。</p>
+</li>
+<li><p>设 $T_i$ 表示 $S$ 的大小为 $i$ 的子集的集合，那么 $\bigcup_{i\in[0,n]}{T_i}&#x3D;2^S$。所以 $\sum{i\in[0,n]}{\binom{n}{i}}&#x3D;2^n$</p>
+</li>
+</ul>
+<h5 id="二项式定理"><a href="#二项式定理" class="headerlink" title="二项式定理"></a>二项式定理</h5><p>$(1+x)^n&#x3D;(1+x)(1+x)\cdots(1+x)&#x3D;\sum{\binom{n}{k}}x^k$</p>
+<p>这个可以通过简单的在中项中选 $k$ 个来表示。同时，这也给出了 $\sum_{i\in[0,n]}{\binom{n}{i}}&#x3D;2^n$ 的另一种证明。</p>
+<p>通过二项式定理，如果我们令 $x&#x3D;-1$，那么 $\sum_{i\in[0,n]}{\binom{n}{i}(-1)^i}&#x3D;0$，也就是 $\sum_{i是奇数}{\binom{n}{i}(-1)^i}&#x3D;\sum_{i是偶数}{\binom{n}{i}(-1)^i}$。也就证明了大小为奇数的子集个数等于大小为偶数的子集个数。</p>
+<p>二项式定理的最大的意义在于，我们用加法和乘法这样基础的代数运算的有机结合，创造出了复杂特殊的具有组合意义的组合数。这种用简单运算组合生成想要的量的思想，为生成函数的涌现埋下了刚刚生出的幼芽。</p>
+<h4 id="text-VI-composition"><a href="#text-VI-composition" class="headerlink" title="$\text{VI: composition}$"></a>$\text{VI: composition}$</h4><p>找到问题 $\text{VI}$ 的解，等价于找到一个 $k&#x3D;m$ 元组 $(x_1,x_2,\cdots,x_k)$ 满足 $x_1+x_2+\cdots+x_k&#x3D;n$，$x_i \in \mathbb{Z}^{+}$。</p>
+<p>它属于一个巨大类问题的特殊形式：线性规划。</p>
+<p>整数线性规划是给定 $k$ 个变量，若干个不等式，求其整数解的数量。其实就是在 $k$ 维空间中，在划定的一个凸多面体中寻找整点的个数。这个问题是 $NP-hard$ 的。不过这个问题显然非常特殊，因为它只有一个等式（相当于两个不等式）。</p>
+<p>我们可以用插板法。更加严谨的证明，我们需要构造双射。</p>
+<p>$\phi((x_1,x_2,\cdots,x_k))&#x3D;(x_1,x_1+x_2,\cdots,x_1+x_2+\cdots+x_k)$</p>
+<p>明显的，右边的每个数都不同，并且都小于 $n$。并且 $\phi$ 是一个双射。而右边其实就是 $n-1$ 的一个大小为 $k-1$ 的无序子集，所以等于 $\binom{n-1}{k-1}$。</p>
+<h4 id="text-VII-Stirling"><a href="#text-VII-Stirling" class="headerlink" title="$\text{VII: Stirling}$"></a>$\text{VII: Stirling}$</h4><p>先看 $\text{IX: Stirling}$</p>
+<p>然后的部分非常简单，我们枚举有多少个集合是空的，答案就是 $\sum_{i\le m}\begin{Bmatrix}n\i\end{Bmatrix}$</p>
+<h4 id="text-VIII-Ordin"><a href="#text-VIII-Ordin" class="headerlink" title="$\text{VIII: Ordin}$"></a>$\text{VIII: Ordin}$</h4><p>这个问题是平凡的，答案为 $[n\le m]$</p>
+<h4 id="text-IX-Stirling"><a href="#text-IX-Stirling" class="headerlink" title="$\text{IX: Stirling}$"></a>$\text{IX: Stirling}$</h4><p>这个问题等价于集合划分，也就是对 $S$，找到 $S_1,S_2,S_3,\cdots,S_k$，满足 $S_i\cap S_j&#x3D;\emptyset(i\neq j),S_i\neq \emptyset$，且 $\bigcup S_i&#x3D;S$。</p>
+<p>我们也将这个问题称为 $n$ 元集的 $\text{k-partition}$。我们定义第二类斯特林数为 $\begin{Bmatrix}n\k\end{Bmatrix}$，也就是把 $n$ 个不同的元素划分到 $k$ 个集合的方案数。</p>
+<p>同时，还有 $\text{all-partition}$ 问题，这个问题的答案是 $B_n&#x3D;\sum_{k\le n}\begin{Bmatrix}n\k\end{Bmatrix}$，又称贝尔数.</p>
+<p>第二类斯特林数有一个递推公式，通过简单的 $dp$ 就可以得到，$\begin{Bmatrix}n\k\end{Bmatrix}&#x3D;k\begin{Bmatrix}n-1\k\end{Bmatrix}+\begin{Bmatrix}n-1\k-1\end{Bmatrix}$。</p>
+<h4 id="text-X-GF"><a href="#text-X-GF" class="headerlink" title="$\text{X: GF}$"></a>$\text{X: GF}$</h4><p>先看 $\text{XII: GF}$</p>
+<p>然后我们枚举几个划分是 $0$，答案是 $\sum_{i\le k} p_i(n)$</p>
+<h4 id="text-XI-Ordinary"><a href="#text-XI-Ordinary" class="headerlink" title="$\text{XI: Ordinary}$"></a>$\text{XI: Ordinary}$</h4><p>和 $\text{VIII}$ 一样，这个问题是平凡的，答案是 $[n\le m]$。</p>
+<h4 id="text-XII-GF"><a href="#text-XII-GF" class="headerlink" title="$\text{XII: GF}$"></a>$\text{XII: GF}$</h4><p>无序的整数划分，也就是找到一组 $(x_1,x_2,\cdots,x_k)$ 满足 $x_1+x_2+\cdots+x_k&#x3D;n$，$x_i \in \mathbb{Z}^{+}$，$x_1\ge x_2\ge \cdots \ge x_k$。</p>
+<p>我们设 $p_k(n)$ 为把 $n$ 划分成 $k$ 个正整数的方案数，然后根据 $x_k$ 进行讨论。</p>
+<ul>
+<li><p>如果 $x_k&#x3D;1$，我们去掉 $x_k$ 并不会影响答案</p>
+</li>
+<li><p>如果 $x_k&gt;1$，所有的 $x_i$ 都大于 $1$，把它们都减掉 $1$ （和减去 $k$）也不会影响答案。</p>
+</li>
+</ul>
+<p>所以 $p_k(n)&#x3D;p_{k-1}(n-1)+p_k(n-k)$，得到了一个递推式子。</p>
+<p>我们想办法逼近一下 $p_k(n)$。</p>
+<p>首先，用 $x_1,x_2,\cdots,x_k$ 构造一个满射，这个满射是 $({x_1,x_2,\cdots,x_k},\pi)\rightarrow (x_1,x_2,\cdots,x_k)$，也就是 $\text{k-composition}$。我们把 ${x_1,x_2,\cdots,x_k}$ 任意排列都会得到一个 $\text{k-composition}$。</p>
+<p>也就是 $(\overline{x},\pi)\rightarrow \overrightarrow{x}$。由满射原理得 $|S|\ge |T|$，即 $k!p_k(n)\ge \begin{pmatrix}n-1\k-1\end{pmatrix}$。</p>
+<p>然后再构造一个单射，我们发现，如果我们把 $x_i$ 加上 $k-i$ 的话，序列变得单调不降。并且满足单射条件。而如果单调不降，就又可以双射到 $k-composition$。</p>
+<p>在构造的过程中，我们一共给数加上了 $\dfrac{k(k-1)}{2}$，所以由单射原理得 $k!p_k(n)\le \begin{pmatrix}n+\dfrac{k(k-1)}{2}-1\k-1\end{pmatrix}$</p>
+<p>由此又得到 $\dfrac{\begin{pmatrix}n-1\k-1\end{pmatrix}}{k!}\le p_k(n)\le \dfrac{\begin{pmatrix}n+\dfrac{k(k-1)}{2}-1\k-1\end{pmatrix}}{k!}$。而若 $k$ 是常数，$n\rightarrow \infty$，则 $p_k(n)\sim \dfrac{n^{k-1}}{k!(k-1)!}$。</p>
+<p>实际上，这个范围就是初等计数所能达到的终点了，它象征着一个时代的终点，用一把斧头就能劈开前路的情况已然不再，没有舟船，谁也无法度过汪洋大海。</p>
+<p><em>你只得到此，不能逾越</em></p>
+<p>拉努马金的研究告诉我们 $p(n)&#x3D;\sum p_k(n)\approx \dfrac{1}{4n}\exp{\pi\sqrt{\dfrac{2n}{3}}}$。</p>
+<p>在 $OI$ 中，想要计算划分数，需要用到 $\text{GF}$ <del>$\text{Girl Friend}$</del> $\text{Generating Function}$。</p>
+<p>埋下的种子将发芽。</p>
+<h3 id="相关的其他计数"><a href="#相关的其他计数" class="headerlink" title="相关的其他计数"></a>相关的其他计数</h3><h4 id="可重集的-k-元子集"><a href="#可重集的-k-元子集" class="headerlink" title="可重集的 $k$ 元子集"></a>可重集的 $k$ 元子集</h4><p>我们现在有一个集合 ${1,2,3,4}$，它的大小为 $3$ 的子集是 ${1,2,3}{1,2,4}{1,3,4}{2,3,4}$。</p>
+<p>但是，如果我们需要的是它的可重子集呢？那就可以是 ${1,1,1}{1,1,2}$ 等等很多的答案。</p>
+<p>要计算可重子集的个数，先要明确可重集的定义。</p>
+<p>可重集是从集合 $S$ 到 $\mathbb{N}$ 的一个映射。</p>
+<p>我们可以用 $0&#x2F;1$ 串来表示子集，也就是 $x_i$ 表示 $S$ 中的第 $i$ 个数是否出现在子集中。这是从 $S$ 到 ${0,1}$ 的映射。那么从 $S$ 到 $\mathbb{N}$ 的映射就是 $m(i)$ 可以为任意的正整数，子集的大小就是 $\sum m(i)$。</p>
+<p>我们发现，这个求可重集的 $k$ 元子集个数，就是 $\sum m(i)&#x3D;k,m(i)\in \mathrm{N}$，等价于十二重计数法之 $IV$。答案就是 $\binom{n+k-1}{k-1}$。</p>
+<h4 id="多项式系数"><a href="#多项式系数" class="headerlink" title="多项式系数"></a>多项式系数</h4><p>我们考虑多重集 $S$ 的排列。如果我们将其可视化，就是若干个可重的字母，求其排列个数。</p>
+<p>形式化的，对于集合 $T$ 到 $\mathrm{N}$ 的映射一个映射 $m(i)$，求其排列个数。我们可以先计算 $|S|$ 的全排列 $n!$。在每个排列中，每个字符之间的全排列都是等价的，也就是对于 $i$ 有 $m(i)!$ 个排列等价，那么最终的答案就是 $\dfrac{n!}{m(1)!m(2)!m(3)!\cdots m(k)!}$，记作 $\binom{n}{m(1),m(2),\cdots,m(k)}$。</p>
+<p>同时，有多项式定理：$(x_1+x_2+\cdots+x_k)^n&#x3D;\sum_{m_1+m_2+\cdots+m_k&#x3D;n}\binom{n}{m_1,m_2,\cdots,m_k}x_1^{m_1}x_2^{m_2}\cdots x_k^{m_k}$。</p>
+<p>这也是一种形式的代数生成。</p>
+<h2 id="三、生成函数"><a href="#三、生成函数" class="headerlink" title="三、生成函数"></a>三、生成函数</h2><h3 id="序"><a href="#序" class="headerlink" title="序"></a>序</h3><p><em>离散和连续的不期而遇，</em><br><em>抽象与数分的阴阳交融。</em></p>
+<p><em>我将以加与乘的生铁铸就组合的奇迹，</em><br><em>这世间都要把你的伟岸与光辉所传颂。</em></p>
+<h2 id="mathfrak-Generating-Function"><a href="#mathfrak-Generating-Function" class="headerlink" title="$ \mathfrak{Generating Function}$"></a>$ \mathfrak{Generating Function}$</h2><h3 id="生成函数所蕴含的思想"><a href="#生成函数所蕴含的思想" class="headerlink" title="生成函数所蕴含的思想"></a>生成函数所蕴含的思想</h3><p>生成函数的主要思想是用简单的加法乘法运算，组合出强大的复杂的数列。你会惊讶于这些简单的东西经过组合之后竟然有如此强大的能量！或许，这也是 <em>组合数学</em> 其名的来历。</p>
+<p>这一思想的直接运用，就是数解空间的大小，即解的数量。</p>
+<h4 id="text-Double-Deck-问题"><a href="#text-Double-Deck-问题" class="headerlink" title="$\text{Double Deck}$ 问题"></a>$\text{Double Deck}$ 问题</h4><p>给定两副完全一样的牌，各有 $n$ 张，现在选 $m$ 张，有多少种选法？</p>
+<p>我们将其转化，设 $z_i$ 是第 $i$ 张牌被选择的次数，则对 $(z_1,z_2,\cdots,z_n)$，有 $z_i \in {0,1,2}$，$\sum z_i&#x3D;m$</p>
+<p>然后，我们可以用一个单项式表示一个选择的方法，$ax_1^{k_1}x_2^{k_2}\cdots x_n^{k_n}$ 表示第 $i$ 张牌选择 $k_i$ 个的方法种数。</p>
+<p>我们就可以用简单的 $(1+x+x^2)$ 组合出问题的答案：$(1+x+x^2)^n$ 的第 $m$ 项的系数。</p>
+<p>而我们用两次二项式定理拆开，能得到</p>
+<p>$(1+x+x^2)^n&#x3D;\sum_{k\le n}{n\choose k}(x+x^2)^k&#x3D;\sum_{m}(\sum_{\ell}{n \choose m-\ell}{m-\ell \choose \ell})x^m$</p>
+<p>所以第 $m$ 项的系数就是 $(\sum_{\ell}{n \choose m-\ell}{m-\ell \choose \ell})$。</p>
+<h3 id="普通生成函数"><a href="#普通生成函数" class="headerlink" title="普通生成函数"></a>普通生成函数</h3><p>$\text{ordinary generating function}$ 是一个级数 $\sum_{n&#x3D;0}^\infty a_nx^n$，对于计算机人来说，它就像是一种编码，把 ${a_i}$ 这个序列用另一种方式写了出来。</p>
+<p>在这种情况下，代数运算成为了基础的零件，供我们利用生成函数之间的运算生成某个答案。答案的形式往往是级数某一项的系数。</p>
+<h4 id="抽象代数"><a href="#抽象代数" class="headerlink" title="抽象代数"></a>抽象代数</h4><p>抽象代数是我们严格的定义生成函数的方式。</p>
+<p>从抽象代数的角度来说，生成函数是一个 <em>形式幂级数</em>，而在形式幂级数上定义加法和乘法就可以构成一个环 $\mathbb{C}[[x]]$。它是形式的，也就是只有加法和乘法。</p>
+<p>这个环有很多便于我们理解的性质。</p>
+<ol>
+<li><p>在环上的加法和乘法是通常意义的，也就是，我们可以直接用多项式的卷积理解它。</p>
+</li>
+<li><p>环上的乘法幺元是 $1$，也就是我们通常理解的自然数 $1$。</p>
+</li>
+</ol>
+<p>同时，因为它是环，那么 $0$ 以外的每个元素都存在乘法逆元。</p>
+<p>这样，我们就可以表示元素 $F(x)$ 的逆元，即若 $F(x)G(x)&#x3D;1$，则称 $G(x)$ 是 $F(x)$ 的逆元，表示为 $F(x)^{-1}$ 或者 $\dfrac{1}{F(x)}$。</p>
+<h4 id="数学分析"><a href="#数学分析" class="headerlink" title="数学分析"></a>数学分析</h4><p>数学分析是我们感性而经验性的理解生成函数的方式，但是它也是严格的。</p>
+<p>从定义上说，形式幂级数和普通的无穷级数具有千丝万缕的联系，所以我们可以方便的把数分中无穷级数的性质拓展到生成函数去。</p>
+<p>首先，从数分角度理解生成函数的基础是这个定理：</p>
+<ul>
+<li>对于 $A(x)&#x3D;\sum_n^{\infty}a_nx^n$ 和 $B(x)&#x3D;\sum_n^{\infty}b_nx^n$，如果对于 $0$ 在复平面上的邻域 $(0,\delta)$ 中的任意 $x_0$ 都有 $A(x)&#x3D;B(x)$，则对任意的 $i$ 都有 $a_i&#x3D;b_i$。</li>
+</ul>
+<p>然后，我们就可以理解成，生成函数是一个本身的函数性质不重要的数学结构，同时，因为对于任何无穷级数总有收敛半径 $r$ 使得复平面上 $0$ 的半径为 $r$ 的邻域内级数都收敛，我们不妨就认为它总是只在这个收敛半径内取值。从而方便的进行求逆、微分等运算。</p>
+<p>在数分角度上理解生成函数，意味着所有的运算，加法、乘法、微分、积分、泰勒展开、求逆，都可以用普通的为我们所熟悉的方式来理解和运用，这是非常可贵的，在实际运用中具有重要的性质。</p>
+<h4 id="生成函数的运算"><a href="#生成函数的运算" class="headerlink" title="生成函数的运算"></a>生成函数的运算</h4><h5 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h5><p>加法是本身形式幂级数所定义的运算，是简单和常规的。</p>
+<p>$(\sum a_nx^n)+(\sum b_nx^n)&#x3D;\sum(a_n+b_n)x^n$</p>
+<h5 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h5><p>乘法也是形式幂级数所定义的，又名为卷积</p>
+<p>$(\sum a_nx^n)*(\sum b_nx^n)&#x3D;\sum (\sum_{k\le n}a_kb_{n-k})x^n$</p>
+<h5 id="几何级数"><a href="#几何级数" class="headerlink" title="几何级数"></a>几何级数</h5><p>从数分的角度上讲，因为我们无时无刻不认为生成函数这个“无穷级数”收敛，所以生成函数 $\sum{\alpha^nx^n}&#x3D;\dfrac{1}{1-\alpha x}$。</p>
+<p>从形式幂级数的角度上讲，$\dfrac{1}{1-\alpha x}$ 是一个记号。</p>
+<p>也就是 $\sum{\alpha^nx^n}$ 在 $\mathbb{C}[[x]]$ 上的乘法逆元。也就是 $(1-\alpha x)\sum{\alpha^nx^n}&#x3D;1$。但是因为逆元的可乘性，$\sum{a^nx^n}$ 和 $\sum{b^n x^n}$ 的积的逆元就是两者逆元的积 $\dfrac{1}{1-ax}\dfrac{1}{1-bx}$。</p>
+<p>如果我们再深究下去，我们会发现，<br>$$\dfrac{1}{1-ax}+\dfrac{1}{1-bx}&#x3D;A(x)+B(x)&#x3D;\sum{(a^n+b^n)x^n}$$</p>
+<p>$$&#x3D;(\sum_n^{\infty}\sum_{k\le n}a^{k}b^{n-k}x^k-\sum_n^{\infty}\sum_{k\ge 1}a^kb^{n-k}x^n)+$$</p>
+<p>$$(\sum_n^{\infty}\sum_{k\le n}a^{k}b^{n-k}x^k-\sum_n^{\infty}\sum_{k\le n-1}a^kb^{n-k}x^n)$$</p>
+<p>$$&#x3D;2\sum_n^{\infty}\sum_{k\le n}a^{k}b^{n-k}x^k-\sum_n^{\infty}\sum_{k\in[0,n-1]}a^{k+1}b^{n-k}x^n-\sum_n^{\infty}\sum_{k\in[0,n-1]}a^{k}b^{n-k-1}x^n$$</p>
+<p>$$&#x3D;2\sum_n^{\infty}\sum_{k\le n}a^{k}b^{n-k}x^k-ax\sum_n^{\infty}\sum_{k\le n}a^{k}b^{n-k}-bx\sum_n^{\infty}\sum_{k\le n}a^{k}b^{n-k}$$</p>
+<p>$$&#x3D;2A(x)B(x)-axA(x)B(x)-bxA(x)B(x)$$</p>
+<p>$$&#x3D;\dfrac{1-ax+1-bx}{(1-ax)(1-bx)}$$</p>
+<p>也就是，逆元记号的加法完全符合分数的运算法则！！！</p>
+<p>或许，我们不应该用“美妙”之类的词汇形容它，因为这种性质是由相似的定义决定的。但是，它就像前路绘制好的风景，只是等待着你，等待着发现美的你。</p>
+<h5 id="微分"><a href="#微分" class="headerlink" title="微分"></a>微分</h5><p>$$G’(x)&#x3D;\sum_{n&#x3D;0}^{\infty}(n+1)g_{n+1}x^n$$</p>
+<p>从数分的角度来说，这是简单的。</p>
+<p>从抽象代数的角度来说，我们不能去研究值域的收敛和极限，但是我们可以定义一个 <strong>微分算子</strong>，也就是，这个形式是我们直接所定义出来的。因为这里只涉及幂，所以不需要进行普适的函数的定义。</p>
+<h5 id="泰勒展开"><a href="#泰勒展开" class="headerlink" title="泰勒展开"></a>泰勒展开</h5><p>$$G(x)&#x3D;\sum_{n&#x3D;0}^{\infty}\dfrac{G^{(n)}(0)}{n!}x^n$$ </p>
+<p>对数分来说，这是简单的。</p>
+<p>但是代数这里确实说不过去了，因为我们带入值本身是不合法的。</p>
+<p>不过我们仔细思考一下，代入 $0$ 相当于什么呢？相当于只取 $G(x)$ 的常数项。那么我们也可以直接定义算子 $\mathbb{0}G(x)$ 代替 $G(0)$，表示 $G(x)$ 的常数项。然后就可以直接做了。</p>
+<h3 id="使用生成函数解决组合计数问题"><a href="#使用生成函数解决组合计数问题" class="headerlink" title="使用生成函数解决组合计数问题"></a>使用生成函数解决组合计数问题</h3><h4 id="text-multiset-问题"><a href="#text-multiset-问题" class="headerlink" title="$\text{multiset}$ 问题"></a>$\text{multiset}$ 问题</h4><p>这个问题我们研究过，我们知道它等价于十二重计数法的第 $\text{IV}$ 个。但是我们可以用生成函数的语言来表示。</p>
+<p>$S&#x3D;{x_1,x_2,\cdots,x_n}$ 的 $multiset$ 个数可以用 $(1+x_1+x_1^2+\cdots)\cdots(1+x_n+x_n^2+\cdots)$ 来生成。</p>
+<p>然后，因为我们不需要区分这些数到底是什么，所以就是 $(1+x+x^2+\cdots)^n$</p>
+<p>也就是 $(1-x)^{-n}$。</p>
+<p>然后我们用牛顿公式展开</p>
+<p>$&#x3D;\sum_{k\ge 0}\dfrac{(-n)(-n-1)\cdots(-n-k+1)(-1)^k}{k!}x^k$</p>
+<p>$&#x3D;\sum_{k\ge 0}\dfrac{(n)(n+1)\cdots(n+k-1)}{k!}x^k$</p>
+<p>$&#x3D;\sum_{k\ge 0}{n+k-1\choose k}x^k$</p>
+<ul>
+<li>牛顿公式：$(1+x)^a&#x3D;\sum_{k\ge 0}\dfrac{(a)(a-1)\cdots(a-k+1)}{k!}x^k$。证明：对 $(1+x)^a$ 进行泰勒展开即可。</li>
+</ul>
+<h4 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h4><p>斐波那契数列是一个数列 ${f_i}$ 满足 $f_{i-2}+f_{i-1}&#x3D;f_i,f_0&#x3D;1,f_1&#x3D;1$。</p>
+<p>我们考虑它的生成函数 $F(x)&#x3D;\sum_{n\ge 0}f_n x^n$，明显的，$f_{i-2}+f_{i-1}&#x3D;f_i$ 意即 $x^2F(x)+xF(x)+1&#x3D;F(x)$（$+1$ 是为了配平常数项为 $1$）。</p>
+<p>解此方程得 $F(x)&#x3D;\dfrac{1}{x^2+x-1}$。</p>
+<p>通过有理分式的知识，我们知道，设<br>$$\phi_-&#x3D;\dfrac{-\sqrt{5}+1}{2},\phi_+&#x3D;\dfrac{\sqrt{5}+1}{2}$$<br>$$1-x-x^2&#x3D;(1-\phi_+x)(1-\phi_-x)$$<br>$$F(x)&#x3D;\dfrac{1}{x^2+x-1}&#x3D;\dfrac{1}{(1-\phi_+x)(1-\phi_-x)}$$<br>则待定系数 $a,b$ 得</p>
+<p>$$F(x)&#x3D;\dfrac{a}{(1-\phi_+x)}+\dfrac{b}{(1-\phi_-x)}$$</p>
+<p>$$a(1-\phi_-x)+b(1-\phi_+x)&#x3D;1$$</p>
+<p>解得 $a&#x3D;-\dfrac{1}{\sqrt{5}}\phi_-,b&#x3D;\dfrac{1}{\sqrt{5}}\phi_+$</p>
+<p>由于 $kA(x)&#x3D;\sum_{n\ge 0}{ka_n x^n},(A(x)+B(x))&#x3D;\sum_{n\ge 0}{(a_n+b_n)x^n}$</p>
+<p>以及 $\dfrac{1}{1-ax}&#x3D;\sum_{n\ge 0}a^nx^n$</p>
+<p>$$F(x)&#x3D;a(\sum_{n\ge 0}{\phi_-^n x^n})+b(\sum_{n\ge 0}{\phi_+^n x^n})&#x3D;\dfrac{1}{\sqrt{5}}\sum_{n\ge 0}{-\phi_-^{n+1} x^n}+\dfrac{1}{\sqrt{5}}\sum_{n\ge 0}{\phi_+^{n+1} x^n}$$<br>$$&#x3D;\dfrac{1}{\sqrt{5}}\sum_{n\ge 0}{(\phi_+^{n+1}-\phi_-^{n+1}) x^n}&#x3D;\sum_{n\ge 0}{\dfrac{(\phi_+^{n+1}-\phi_-^{n+1})}{\sqrt{5}} x^n}$$</p>
+<p>展开 $\phi_-$ 和 $\phi_+$，就得到我们的最终 ${f_n}$：</p>
+<p>$$f_n&#x3D;\dfrac{(\dfrac{\sqrt{5}+1}{2})^{n+1}-(\dfrac{-\sqrt{5}+1}{2})^{n+1}}{\sqrt{5}}$$</p>
+<h4 id="卡特兰数"><a href="#卡特兰数" class="headerlink" title="卡特兰数"></a>卡特兰数</h4><p>卡特兰数的定义方法有很多，但是为了方便定义其递归形式，我们还是使用如下定义：</p>
+<ul>
+<li>$C_n$ 表示有 $n+1$ 个叶子节点的满二叉树个数。</li>
+</ul>
+<p>然后我们考虑如何求卡特兰数，设其生成函数为 $F(x)&#x3D;\sum_{n&#x3D;0}^{\infty}C_nx^n$。</p>
+<p>根据定义，有递推公式 $C_n&#x3D;\sum_{k&#x3D;0}^{n-1}C_kC_{n-k-1}$，$C_0&#x3D;1$。</p>
+<p>所以，有 $F(x)&#x3D;\sum_{n&#x3D;0}^{\infty}C_nx^n&#x3D;C_0+\sum_{n&#x3D;1}^{\infty}(\sum_{k&#x3D;0}^{n-1}C_kC_{n-k-1})x^n$。</p>
+<p>然后我们考虑去把后面的 $\sum_{n&#x3D;1}^{\infty}(\sum_{k&#x3D;0}^{n-1}C_kC_{n-k-1})x^n$ 凑成 $F(x)$ 的表达式，这个东西看起来很像卷积，那么往卷积公式 $F(x)^2&#x3D;\sum_{n&#x3D;0}^{\infty}\sum_{k&#x3D;0}^{n}C_kC_{n-k}x^n$ 上凑。</p>
+<p>我们发现如果令 $n’&#x3D;n-1$，那么 $\sum_{n&#x3D;1}^{\infty}(\sum_{k&#x3D;0}^{n-1}C_kC_{n-k-1})x^n$ 就等于 $\sum_{n’&#x3D;0}^{\infty}(\sum_{k&#x3D;0}^{n’}C_kC_{n’-k})x^{n’+1}$，然后提出一个 $x$，就变成了卷积的形式。所以我们得到</p>
+<p>$$F(x)&#x3D;1+xF(x)^2$$</p>
+<p>解这个方程得到 $F(x)&#x3D;\dfrac{1\pm\sqrt{1-4x}}{2x}$。</p>
+<p>但是现在遇到了问题，我们得到了两个解。可是卡特兰数的定义是唯一的。</p>
+<p>$$代数是慷慨的，它提供给人们的常常比人们要求的还要多。——达朗贝尔$$</p>
+<p>现在我们遇到麻烦了。第一个想法是求助于解析。因为我们知道，即使没有抽象代数中形式幂级数的定义，在柯西-维尔斯特拉斯定理的帮助下，生成函数的定义也是完备的。</p>
+<p>果然，解析给了我们良好的答案，我们在 $0$ 的邻域内求极限，得到</p>
+<p>$\lim_{n\rightarrow 0}\dfrac{1+\sqrt{1-4x}}{2x}&#x3D;\infty$</p>
+<p>$\lim_{n\rightarrow 0}\dfrac{1-\sqrt{1-4x}}{2x}&#x3D;1$</p>
+<p>所以我们舍掉第一个根而选用第二个。</p>
+<p>但是作为基准的抽象代数呢？</p>
+<p>我们发现，对于一个级数来说，一定存在收敛半径。但是第一个根如果作为级数来看，它在 $0$ 处是发散的。</p>
+<p>这就引起了我们的警觉，第一个根根本就没法展开成级数形式！</p>
+<p>实际上，在不同的域上解方程，其解的情况是不同的。解一元二次方程，在实数域上可能无解，在复数域上就一定有两个根，而在形式幂级数环上，这个方程就只有一个根。这是形式幂级数环上的幂零根性质导致的。</p>
+<p>所以，我们得到了卡特兰数的生成函数的封闭形式 $F(x)&#x3D;\dfrac{1-(1-4x)^{1&#x2F;2}}{2x}$。</p>
+<p>首先根据牛顿公式展开 $(1-4x)^{1&#x2F;2}&#x3D;\sum_{n&#x3D;0}^{\infty}\binom{1&#x2F;2}{n}(-4x)^n$</p>
+<p>然后拆出常数项 $1+\sum_{n&#x3D;1}^{\infty}\binom{1&#x2F;2}{n}(-4x)^n$，提出一个 $-4x$ 得到 $1-4x\sum_{n&#x3D;0}^{\infty}\binom{1&#x2F;2}{n+1}(-4x)^n$。代入原式得到 $2\sum_{n&#x3D;0}^{\infty}\binom{1&#x2F;2}{n+1}(-4x)^n$。</p>
+<p>我们得到 $C_n&#x3D;2\binom{1&#x2F;2}{n+1}(-4)^n$，拆开得到</p>
+<p>$C_n&#x3D;2\dfrac{(1&#x2F;2)(1&#x2F;2-1)(1&#x2F;2-2)\cdots (1&#x2F;2-n)}{(n+1)!}(-4)^n$</p>
+<p>$&#x3D;\dfrac{(1-2)(1-4)\cdots(1-2n)}{(n+1)!}(-2)^n$</p>
+<p>$&#x3D;\dfrac{1\cdot 3\cdot 5\cdots(2n-1)}{(n+1)!}2^n$</p>
+<p>$&#x3D;\dfrac{(2n)!}{(n+1)!n!}$</p>
+<p>$&#x3D;\dfrac{1}{n+1}\binom{2n}{n}$</p>
+<p>这就是卡特兰数。</p>
+<h5 id="多边形的三角形划分"><a href="#多边形的三角形划分" class="headerlink" title="多边形的三角形划分"></a>多边形的三角形划分</h5><p>三角形是二维平面上的单纯形。也就是，我们不能通过它的顶点之间的连接将其划分成其他的二维图形。</p>
+<p>而 $n$ 边形则可以划分成若干个三角形。现在如果我们将多边形的顶点视作互不相同的，求其划分方法。</p>
+<p>我们可以将其一一对应到二叉树上，我们定义一个起始节点，将每个小的三角形看作叶子节点，那么我们可以分治的考虑，将剩下的多边形划分成两边，一边归入左子树，另一边归入右子树，就可以一一对应到有 $n-2$ 个叶子节点的满二叉树，划分方案数是 $C_{n-3}$。</p>
+<h4 id="快速排序的平均复杂度分析"><a href="#快速排序的平均复杂度分析" class="headerlink" title="快速排序的平均复杂度分析"></a>快速排序的平均复杂度分析</h4><p>我们知道，快速排序在最坏的情况下复杂度是 $\Theta(n^2)$ 的。而其平均复杂度是 $O(n\ln n)$，平均复杂度就是对于一个序列 $A$ 的所有排列，其比较次数的平均值，也就是比较次数的期望。</p>
+<p>设 $T_n$ 为对长度 $n$ 的序列进行快速排序的期望复杂度。</p>
+<p>则有 $T_n&#x3D;\dfrac{1}{n}\sum_{k&#x3D;1}^{n}(n-1+T_{k-1}+T_{n-k})$，$T_0&#x3D;0$，$T_1&#x3D;0$。</p>
+<p>然后设 $F(x)&#x3D;\sum_{n&#x3D;0}^{\infty}T_nx^n$，拆开两边，得到</p>
+<p>$nT_n&#x3D;\sum_{k&#x3D;1}^n(n-1)+2\sum_{k&#x3D;0}^{n-1}T_k$</p>
+<p>写成生成函数的形式，为</p>
+<p>$\sum_{n&#x3D;0}^{\infty}nT_nx^n&#x3D;\sum_{n&#x3D;0}^{\infty}n(n-1)x^n+2\sum_{n&#x3D;0}^{\infty}\sum_{k&#x3D;0}^{n-1}T_kx^n$</p>
+<p>然后凑成 $F(x)&#x3D;\sum_{n&#x3D;0}^{\infty}T_nx^n$ 的形式。</p>
+<p>设 $n’&#x3D;n-1$，$\sum_{n&#x3D;0}^{\infty}nT_nx^n&#x3D;x\sum_{n’&#x3D;0}^{\infty}(n’+1)T_{n’+1}x^{n’}&#x3D;xF’(x)$</p>
+<p>$\sum_{n&#x3D;0}^{\infty}n(n-1)x^n&#x3D;2x^2\sum_{n&#x3D;0}^{\infty}\dfrac{n(n-1)}{2}x^{n-2}&#x3D;\dfrac{2x^2}{(1-x)^3}$</p>
+<p>设 $n’&#x3D;n-1$，$2\sum_{n&#x3D;0}^{\infty}\sum_{k&#x3D;0}^{n-1}T_kx^n&#x3D;2x\sum_{n’&#x3D;0}^{\infty}\sum_{k&#x3D;0}^{n’}T_kx^{n’}&#x3D;\dfrac{2xF(x)}{1-x}$。</p>
+<p>$xF’(x)&#x3D;\dfrac{2x^2}{(1-x)^3}+\dfrac{2xF(x)}{1-x}$</p>
+<p>$F’(x)-\dfrac{2F(x)}{1-x}&#x3D;\dfrac{2x}{(1-x)^3}$</p>
+<p>这是一个线性常微分方程，一阶线性常微分方程 $y’+P(x)y&#x3D;Q(x)$ 有通解</p>
+<p>$$u(x)&#x3D;e^{\int P(x) dx},y&#x3D;\dfrac{1}{u(x)}\int u(x)Q(x) dx$$</p>
+<h5 id="Ex：一阶线性常微分方程通解公式证明"><a href="#Ex：一阶线性常微分方程通解公式证明" class="headerlink" title="Ex：一阶线性常微分方程通解公式证明"></a>Ex：一阶线性常微分方程通解公式证明</h5><p>设 $y&#x3D;\dfrac{G(x)}{u(x)}$，$u(x)$ 的定义如上</p>
+<p>则 $y’&#x3D;\dfrac{u(x)G’(x)-u’(x)G(x)}{u^2(x)}$</p>
+<p>$&#x3D;\dfrac{e^{\int P(x) dx}G’(x)-P(x)G(x)e^{\int P(x) dx}}{e^{2\int P(x) dx}}$</p>
+<p>$&#x3D;\dfrac{G’(x)-P(x)G(x)}{u(x)}$</p>
+<p>$G’(x)-P(x)G(x)+P(x)G(x)&#x3D;u(x)Q(x)$</p>
+<p>$G’(x)&#x3D;u(x)Q(x)$</p>
+<p>$G(x)&#x3D;\int u(x)Q(x)dx$</p>
+<p>即可得此公式。</p>
+<p>然后，我们套用此公式，令 $P(x)&#x3D;-\dfrac{2}{1-x}$，$Q(x)&#x3D;\dfrac{2x}{(1-x)^3}$</p>
+<p>即可得到 $u(x)&#x3D;e^{\int -2&#x2F;(1-x)dx}$</p>
+<p>$\int \dfrac{2}{x-1}dx&#x3D;2\int \dfrac{1}{x-1}dx&#x3D;2\int \dfrac{1}{x-1}d(x-1)&#x3D;2\ln|x-1|$，我们不在乎 $x$ 的取值，所以把绝对值去掉，$2\ln(x-1)$，$u(x)&#x3D;(x-1)^2$</p>
+<p>$\int u(x)Q(x)dx&#x3D;\int (x-1)^2\dfrac{2x}{(1-x)^3}dx&#x3D;\int \dfrac{2x}{(1-x)}dx$</p>
+<p>$&#x3D;-\int \dfrac{2x}{x-1}dx&#x3D;-\int (2-\dfrac{2}{x-1})dx&#x3D;-2x$</p>
+<h2 id="四、容斥原理"><a href="#四、容斥原理" class="headerlink" title="四、容斥原理"></a>四、容斥原理</h2><p>$$一切繁复都洗涤，却染上重叠的星$$</p>
+<h3 id="容斥原理"><a href="#容斥原理" class="headerlink" title="容斥原理"></a>容斥原理</h3><p><img src="https://img2023.cnblogs.com/blog/3096527/202303/3096527-20230324185713928-560001260.png" alt="image"></p>
+<p>是容斥原理的基本公式。</p>
+<p>但是我们并不经常的使用这个公式本身，我们一般使用这个公式的推论：</p>
+<p><img src="https://img2023.cnblogs.com/blog/3096527/202303/3096527-20230324185831370-183229430.png" alt="image"></p>
+<p>具体的理解这个式子，就是在全集 $\mathbb{U}$ 中，我们有若干个子集 $A_i$，其中的元素是坏的。现在我们需要找到不被任何子集包含的元素个数。</p>
+<h4 id="容斥原理的证明"><a href="#容斥原理的证明" class="headerlink" title="容斥原理的证明"></a>容斥原理的证明</h4><p>使用集合论和数学归纳法，是容易证明的。但是如果从概率的角度来说，我们就有更好的方法证明它。</p>
+<p>我们设事件 $X_i$ 为随机选一个元素，子集 $A_i$ 中的元素被选中。然后取它的指示随机变量 $I(X_i)\in{0,1}$ 表示事件 $X_i$ 的发生与否。</p>
+<p>然后，又有对于两个随机事件 $A,B$，$I(AB)&#x3D;I(A)I(B)$，由于满足结合律，我们就可以推广到 $I(\bigcap X_i)&#x3D;\prod I(X_i)$。</p>
+<p>同时，$I(\overline A)&#x3D;1-I(A)$，所以 $I(\bigcap \overline X_i)&#x3D;\prod (1-I(X_i))$。</p>
+<p>也就等于 $\sum_{S\subseteq\mathbb{U}}(-1)^{|S|}\prod_{i\in S}I(X_i)$。</p>
+<p>回代公式 $\sum_{S\subseteq\mathbb{U}}(-1)^{|S|}I(\bigcap_{i\in S} X_i )$。</p>
+<p>然后对两边取期望，指示随机变量的期望就是该事件的概率</p>
+<p>$P(\bigcap \overline X_i)&#x3D;\sum_{S\subseteq\mathbb{U}}(-1)^{|S|}P(\bigcap_{i\in S} X_i )$</p>
+<p>$\dfrac{|\bigcap \overline A_i|}{|\mathbb{U}|}&#x3D;\sum_{S\subseteq\mathbb{U}}(-1)^{|S|}\dfrac{|\bigcap_{i\in S}A_i|}{\mathbb{|U|}}$</p>
+<p>两边约去 $\mathbb{U}$，得到推论公式。</p>
+<h4 id="容斥原理和集合划分"><a href="#容斥原理和集合划分" class="headerlink" title="容斥原理和集合划分"></a>容斥原理和集合划分</h4><p>我们知道集合划分是斯特林数，等价于满射个数问题，那么我们就来尝试数满射个数。</p>
+<p>我们可以设 $r_k$ 为至少有 $k$ 个位置没有被射到的映射个数，很容易得到 $r_k&#x3D;\begin{pmatrix}n\k\end{pmatrix}(n-k)^n$</p>
+<p>然后我们就可以直接容斥得到答案 $\sum_{k\le 0}(-1)^kr_k$，下标替换 $k&#x3D;n-k$ 得到 $\sum_{k\le 0}(-1)^{n-k}\begin{pmatrix}n\k\end{pmatrix}k^n$。</p>
+<p>然后斯特林数是不考虑顺序的满射个数，也就是要除以 $|\pi|$，那么 $\begin{Bmatrix}n\k\end{Bmatrix}&#x3D;\dfrac{1}{n!}\sum_{k\le 0}(-1)^{n-k}\begin{pmatrix}n\k\end{pmatrix}k^n&#x3D;\sum_{k\le 0}\dfrac{(-1)^{n-k}k^n}{k!(n-k)!}$</p>
+<h5 id="容斥原理的优势和劣势"><a href="#容斥原理的优势和劣势" class="headerlink" title="容斥原理的优势和劣势"></a>容斥原理的优势和劣势</h5><p>容斥原理的优势在于，我们只需要数“至少有 $k$ 个位置满足某某条件”的方案个数，而不必要数“恰好有 $k$ 个位置满足某某条件”的方案个数。也就是，我们不需要考虑算重的问题。</p>
+<p>但是，容斥原理的公式形式决定了我们很难得到没有 $\sum$ 的封闭形式。</p>
+<h4 id="错排问题"><a href="#错排问题" class="headerlink" title="错排问题"></a>错排问题</h4><p>错排问题可以表述成满足 $i\neq\pi(i)$ 的排列个数。</p>
+<p>我们记 $r_k$ 为至少有 $k$ 个位置满足 $i&#x3D;\pi(i)$ 的排列个数，那么容易得到 $r_k&#x3D;\begin{pmatrix}n\k\end{pmatrix}(n-k)!$。然后就可以直接容斥原理求得答案为 $\sum (-1)^k\begin{pmatrix}n\k\end{pmatrix}(n-k)!&#x3D;n!\sum\dfrac{(-1)^k}{k!}$。</p>
+<p>我们发现，$\sum_k \dfrac{(-1)^k}{k!}$ 其实就是 $e^{-1}$ 的泰勒展开式的前 $n$ 项，所以 $n!\sum\dfrac{(-1)^k}{k!}\sim \dfrac{n!}{e}$，也就是概率是个常数。</p>
+<h5 id="生成函数和容斥原理"><a href="#生成函数和容斥原理" class="headerlink" title="生成函数和容斥原理"></a>生成函数和容斥原理</h5><p>我们可以设 $x_i$ 为选择 $i$ 的个数的随机变量，然后每个位置可以映射到除了子集以外的所有值，也就是它对答案的贡献是 $x_1+x_2+\cdots x_{i-1}+x_{i+1}\cdots +x_n$。但是这样有点麻烦，我们就记 $s&#x3D;\sum x_i$，那么贡献就是 $s-x_i$</p>
+<p>然后我们要求的答案就是 $\prod (s-x_i)$ 的第 $\prod_{i\le n}x_i$ 项系数。那么我们就枚举其中有 $k$ 个来自 $-x_i$，剩下的 $n-k$ 个自由安排来自某个 $s$， 则为 $\begin{pmatrix}n\k\end{pmatrix}(n-k)!$。所有的来自 $-x_i$ 的都带系数 $-1$，所以贡献要乘上 $(-1)^k$。</p>
+<p>我们就用生成函数在不同的含义和相似的形式下求出了错排数。</p>
+<h4 id="法兰西晚宴"><a href="#法兰西晚宴" class="headerlink" title="法兰西晚宴"></a>法兰西晚宴</h4><p>对于一个圆环，安排 $1\sim 2n$ 的所有数，使得 $[1,n]$ 的所有数都不相邻，$[n+1,2n]$ 的所有数都不相邻，$i$ 和 $i+n$ 不相邻。</p>
+<p>我们可以先把 $[n+1,2n]$ 都先安排好，共有 $2n!$ 种。然后就是对于 $n$ 个数，每个位置不能选择自己在 $n$ 长度的圆环上的对应点和其后继的方案数。</p>
+<p>我们把这个排列问题映射成棋盘，也就是所有打 $x$ 的位置不能选择，并且每行每列都只选择一个的方案数。</p>
+<p><img src="https://img2023.cnblogs.com/blog/3096527/202303/3096527-20230324200001838-627613692.png" alt="image"></p>
+<p>然后我们发现，我们就只要求出至少 $k$ 个位置被选择为 $x$ 的方案数。</p>
+<p>然后，我们发现所有不能选的点构成一个长度 $2n$ 的环，问题转化为求取在 $m$ 的环上选 $k$ 个不相邻的数的个数 $C(m,k)$。</p>
+<p>首先，我们可以算在长度 $m$ 的链上选择 $k$ 个不相邻位置的方案数，先把这 $k$ 个位置选走，我们发现，我们就是在剩下的 $m-k$ 个位置种插板，方案数 $L(m-k)&#x3D;\begin{pmatrix}m-k+1\k\end{pmatrix}$。</p>
+<p>然后，我们发现，如果把环上没有选取的位置断开一个得到的结果，和在链上的某个位置插入一个未选择的位置是相同的。那么就有 $(m-k)C(m-k)&#x3D;mL(m-1,k)$</p>
+<p>解出 $C(m,k)&#x3D;\dfrac{m}{m-k}\begin{pmatrix}m-k\k\end{pmatrix}$</p>
+<p>然后 $r_k&#x3D;\dfrac{2n}{2n-k}\begin{pmatrix}2n-k\k\end{pmatrix}$</p>
+<p>也就得到答案为</p>
+<p><img src="https://img2023.cnblogs.com/blog/3096527/202303/3096527-20230324201617877-2073950114.png" alt="image"></p>
+<h3 id="反演"><a href="#反演" class="headerlink" title="反演"></a>反演</h3><p>反演就是对于两个整数函数 $f$ 和 $g$，从用 $g$ 表示 $f$ 转化为用 $f$ 表示 $g$。</p>
+<p>简而言之，$f(n)$ 是 $g(0),g(1),\cdots,g(n)$ 的一个线性组合，那么很明显，有 $f(n)&#x3D;\sum_{i&#x3D;0}^na_{n,i}g(i)$。</p>
+<p>如果把 $g(i),f(i)$ 用向量 $G,F$ 表示，那么 $F&#x3D;{a_{i,j}}*G$</p>
+<p>而反演的实质就是想要找到一个下三角矩阵 $B&#x3D;{b_{i,j}}$ 满足 $G&#x3D;{b_{i,j}}*F$，也就是 $g(n)&#x3D;\sum_{i&#x3D;0}^nb_{n,i}f(i)$</p>
+<p>记 $A&#x3D;{a_{i,j}}$，那么有 $F&#x3D;AG,G&#x3D;BF$，提一下，$F&#x3D;A(BF)$，$F&#x3D;(AB)F$，所以 $AB&#x3D;E$，所以 $B&#x3D;A^{-1}$。</p>
+<p>或者说，$\sum_{k}a_{i,k}b_{k,j}&#x3D;[i&#x3D;j]$</p>
+<p>所以实际上我们就是要找到 $A$ 的逆矩阵。</p>
+<p>求取这个逆矩阵其实很简单，我们只需要在想要的 $a_{i,j}$ 下，把特殊的 $f(n)$ 和 $g(n)$ 带入进去，得到 $b_{i,j}$ 就可以得到对普适的 $f(n),g(n)$ 的结论。</p>
+<h3 id="二项式反演"><a href="#二项式反演" class="headerlink" title="二项式反演"></a>二项式反演</h3><p>例如，二项式反演，$f(n)&#x3D;\sum_{i&#x3D;0}^n\binom{n}{i}g(i)$，那么我们令 $g(i)&#x3D;(x-1)^i$，那么根据二项式定理，$f(n)&#x3D;x^n$，接下来，$(x-1)^n&#x3D;\sum_{i&#x3D;0}^n b_{n,i}x^i$，很明显，因为 $(x-1)^n&#x3D;\sum_{i&#x3D;0}^n (-1)^{n-i}\binom{n}{i}x^i$，所以 $b_{n,i}&#x3D;(-1)^{n-i}\binom{n}{i}$。</p>
+<p>我们就得到了 $g(n)&#x3D;\sum_{i&#x3D;0}^n(-1)^{n-i}\binom{n}{i}f(i)$。</p>
+<h4 id="其他形式"><a href="#其他形式" class="headerlink" title="其他形式"></a>其他形式</h4><p>我们尝试从各个方面修改二项式反演的形式。</p>
+<p>首先，增加下界，$f(n)&#x3D;\sum_{i&#x3D;m}^n\binom {n}{i}g(i)$。这个形式下，我们发现我们其实就是把 $a_{i,j}(j\lt m)$ 全部设为 $0$。这个矩阵很明显是没有逆矩阵的，怎么办呢？</p>
+<p>我们意识到在没有前 $m$ 列（对于上三角形方阵而言，同样没有前 $m$ 行）的群中，去点前 $m$ 列的单位矩阵同样也满足群幺元的性质。而我们的 $f$ 和 $g$ 恰好也都是去掉前 $m$ 行的，只用 $m$ 以后的列的单位阵 $E’$ 相乘依旧等于自身。</p>
+<p>所以，我们需要的就是 $A’$ 在去掉前 $m$ 列的下三角方阵群上的逆元，对于 $B’$ 矩阵，同样满足 $A’B’&#x3D;E’$。</p>
+<p>我们设 $A$ 的前 $i$ 行单独提取出来的矩阵是 $A’’$，同理 $B$ 为 $B’’$，$E$ 为 $E’’$。然后有 $A’&#x3D;A-A’’,B’&#x3D;B-B’’,E&#x3D;E-E’’$。</p>
+<p>$A’B’&#x3D;E’$<br>$(A-A’’)(B-B’’)&#x3D;E-E’’$<br>$AB-A’’B-AB’’+A’’B’’&#x3D;E-E’’$<br>$A’’B’’-A’’B-AB’’&#x3D;E’’$</p>
+<p>因为 $A’’$ 和 $B’’$ 是只有前 $m$ 行的。而乘积的前 $m$ 行是不受影响的，依旧是单位阵 $E’’$，至于后面的列（行），只要因子里面某一个矩阵啥也没有，就是啥也没有的 $0$，所以最后 $A’’B’’,A’’B,AB’’$ 都是 $E’’$，发现最后一个式子成立，那么往回带就得到第一个式子成立。</p>
+<p>然后我们就知道在去掉前 $m$ 行的情况下，$A$ 的逆元就是 $A^{-1}$ 去掉前 $i$ 行。<br>所以 $g(n)&#x3D;\sum_{i&#x3D;m}^n(-1)^{n-i}\binom{n}{i}f(i)$</p>
+<p>其次，重新转写，$f(n)&#x3D;\sum_{i&#x3D;n}^m\binom{i}{n}g(i)$。</p>
+<p>我们很容易的发现，其实 $A_{n,i}&#x3D;\binom{i}{n}$，对应着当前的矩阵是原来的矩阵的转置。那么就非常容易了。因为 $A^T$ 的逆是 $A$ 的逆的转置。所以我们要的 $B$ 就是 $B^T$，也就得到 $g(n)&#x3D;\sum_{i&#x3D;n}^m(-1)^{i-n}\binom {i}{n}f(i)$。</p>
+<h3 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h3><p>首先我们有狄利克雷卷积，然后 $\mu*I$ 按照定义就是 $\delta$，数论函数部分就直接略过了。</p>
+<p>然后莫比乌斯反演的第一种形式是从 $\mu$ 是 $I$ 的逆元推出来的，$f&#x3D;I<em>g$，所以两遍同乘 $\mu$，$\mu</em>f&#x3D;mu<em>I</em>g&#x3D;g$</p>
+<p>我们需要用反演来推的是莫比乌斯反演的第二种形式，$f(n)&#x3D;\sum_{n|d}g(d)$</p>
+<p>我们先把第一种形式写成矩阵的形式，$f(n)&#x3D;\sum_{d|n}g(d)$</p>
+<p>其实也就是 $a_{n,i}&#x3D;[i|n]$。</p>
+<p>然后我们很快发现，这个第二种形式的 $a_{n,i}&#x3D;[n|i]$，显然就是第一种的矩阵的转置。所以我们直接把 $b_{n,i}&#x3D;\mu(\dfrac{n}{i})[i|n]$ 转置一下就得到了。</p>
+<p>$g(n)&#x3D;\sum_{n|d}\mu(\dfrac{d}{n})f(d)$</p>
+<h2 id="五、图的匹配"><a href="#五、图的匹配" class="headerlink" title="五、图的匹配"></a>五、图的匹配</h2><h3 id="二分图匹配和霍尔定理"><a href="#二分图匹配和霍尔定理" class="headerlink" title="二分图匹配和霍尔定理"></a>二分图匹配和霍尔定理</h3><h4 id="相异代表系"><a href="#相异代表系" class="headerlink" title="相异代表系"></a>相异代表系</h4><p>我们用一个相异代表系描述二分图匹配问题。我们有若干个集合 ${S_1,S_2,S_3,\cdots,S_m}$，现在要给每个集合选定一个代表 $x_i\in S_i$，并且每个 $x_i$ 是相异的。</p>
+<p>容易发现这个问题和二分图匹配问题是等价的。</p>
+<h4 id="霍尔定理"><a href="#霍尔定理" class="headerlink" title="霍尔定理"></a>霍尔定理</h4><ul>
+<li>对于 $m$ 个集合，如果它们存在一个相异代表系，等价于对于任何的 $I\subseteq {S_1,S_2,\cdots,S_m}$，都有 $|\bigcup_{i\in I}S_i|\ge |I|$。</li>
+</ul>
+<p>首先，必要性是明显的，如果存在一个 $I$ 不满足，那么显然对于这个子问题无解。然后就是要证明充分性，也就是只要有 $\forall I,|\bigcup_{i\in I}S_i|\ge |I|$，都存在一个相异代表系。</p>
+<h4 id="数学归纳法"><a href="#数学归纳法" class="headerlink" title="数学归纳法"></a>数学归纳法</h4><p>假设条件对任意 $n\lt m$ 成立，考虑规模为 $n$ 的子问题。我们定义 $|\bigcup_{i\in I}S_i|&#x3D;|I|$ 的集合 $I$ 是特殊的。那么，我们按照当前集合是否存在特殊的子集分类。如果不存在，我们可以随便选择一个集合和它内部的任何的点。因为任何的 $|\bigcup_{i\in I}S_i|&gt;|I|$，所以在两边都至多减去 $1$ 个之后依旧有 $|\bigcup_{i\in I}S_i|\ge|I|$。这就是规模 $n-1$ 的子问题，得证。</p>
+<p>我们需要处理的是存在特殊集合的子问题。首先，因为 $|\bigcup_{i\in I}S_i|&#x3D;|I|$，所以这一块很明显变成了独立的子问题。$\bigcup_{i\in I}S_i$ 外面的不可能和里面匹配（否则里面的就不够用了），里面又不能和外面匹配。那么我们的问题就被划分成 $I$ 和 $X&#x2F;I$ 两部分。而 $I$ 里面的子集都是原来的子集，$I$ 是显然满足条件的。我们只需要验证 $X&#x2F;I$ 满足霍尔条件。</p>
+<p>我们发现，对 $X&#x2F;I$ 里的任何子集 $J$，考虑它和我们取走的特殊子集 $I$，有 $|\bigcup_{i\in I}S_i\cup\bigcup_{i\in J}S_i|\ge |I\cup J|$。因为 $I$ 和 $J$ 很明显不交，所以 $|I\cup J|&#x3D;|I|+|J|$。所以 $|\bigcup_{i\in I}S_i|+|\bigcup_{i\in J}S_i|\ge |\bigcup_{i\in I}S_i\cup\bigcup_{i\in J}S_i|\ge |I\cup J|&#x3D;|I|+|J|$。因为 $|\bigcup_{i\in I}S_i|&#x3D;|I|$，所以 $|\bigcup_{i\in J}S_i|\ge |J|$。也就是 $X&#x2F;I$ 同样满足霍尔条件，得证。</p>
+<h3 id="原始对偶现象"><a href="#原始对偶现象" class="headerlink" title="原始对偶现象"></a>原始对偶现象</h3><h4 id="二分图最大匹配-二分图最小点覆盖"><a href="#二分图最大匹配-二分图最小点覆盖" class="headerlink" title="二分图最大匹配&#x3D;二分图最小点覆盖"></a>二分图最大匹配&#x3D;二分图最小点覆盖</h4><h5 id="矩阵形式"><a href="#矩阵形式" class="headerlink" title="矩阵形式"></a>矩阵形式</h5><p>我们把二分图的邻接矩阵写出来。则二分图最大匹配等价于找到最多的 $1$ 使得它们的行和列互不相同。二分图最小点覆盖等价于选择一些行和一些列覆盖所有的 $1$，是选中的行和列总和最少。</p>
+<h5 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h5><p>证明最小点覆盖不小于最大匹配是简单的。$a$ 个独立的 $1$ 至少需要 $a$ 行或列覆盖。那么我们需要证明最小点覆盖不大于最大匹配，就能证明两者相等。我们考虑把最小点覆盖选定的行和列置换到前面，则我们的矩阵变成只有前 $a$ 行和前 $b$ 列有值（二者满足其一即可）。然后我们把前 $a$ 行右边的部分扒出来，证明在这个子矩阵中一定存在 $a$ 个独立的 $1$。如果存在，对偶的对最下角也成立，所以就存在 $a+b$ 个独立的 $1$。得证。如果不存在，那么首先，如果有某一行没有，除掉这一行也不会有影响。如果有的列少于 $a$，那么全部用列覆盖显然更优，都和当前是最小点覆盖的假设矛盾。所以每一行每一列都有 $a$，根据霍尔定理，也就一定存在 $a$ 个独立的 $1$。</p>
+<p>得证二分图最大匹配等于二分图最小点覆盖。</p>
+<h5 id="平面图"><a href="#平面图" class="headerlink" title="平面图"></a>平面图</h5><p>平面图最大匹配可以用带花树算法在多项式时间内解决，平面图最小点覆盖则是 $NP-hard$ 的。不过，我们可以证明最小点覆盖在最大匹配和二倍最大匹配之间，这是显然的。</p>
+<h4 id="偏序集最大反链-偏序集最小链覆盖"><a href="#偏序集最大反链-偏序集最小链覆盖" class="headerlink" title="偏序集最大反链&#x3D;偏序集最小链覆盖"></a>偏序集最大反链&#x3D;偏序集最小链覆盖</h4><p>偏序集图就是如果 $a\rightarrow b$ 有边 $b\rightarrow c$ 有边则 $a\rightarrow c$ 有边的图。</p>
+<p>偏序集图上的一条链就是所有的元素相继有边的点集。偏序集图上的一个反链是任何元素都没有边的点集。</p>
+<p>考虑画二分图，每个点在左右都对应画一个边。如果 $u\rightarrow v$ 有边，就在二分图上连一个 $v_{left}\leftarrow u_{right}$。根据二分图最大匹配等于二分图最小点覆盖，这张图同样满足性质。</p>
+<p>然后我们研究反链，我们发现其实就是点覆盖中选了的点一定是反链中没有的。所以最大反链是点总数减去最小点覆盖。</p>
+<p>之后研究链。我们把每个相对的 $u_{left}$ 和 $u_{right}$ 连一条虚边，然后从第一个点开始往下走路径。我们发现，当前不能往下走当且仅当当前点没有匹配。所以链的个数就是在最大匹配中没有匹配到的点的个数，是点总数减去最大匹配。</p>
+<p>得证二者相等。</p>
+<h5 id="霍尔定理-1"><a href="#霍尔定理-1" class="headerlink" title="霍尔定理"></a>霍尔定理</h5><p>我们再用这个定理推回霍尔定理。我们发现我们可以把相异代表系理解成一个二层的偏序图，每个元素向集合连边当且仅当集合包含它。</p>
+<p>我们发现，当前元素的相异代表系是一个链覆盖，并且是最小链覆盖。所以我们只需要证明满足霍尔条件时，这个偏序图的最大反链是 $n$ 即可。</p>
+<p>假设最大反链中，选择的所有的集合一共 $k$ 个，因为霍尔条件，它们至少连到 $k$ 个元素，这些都不能选。所以反链的大小不超过 $n-k+k&#x3D;n$。同时还存在所有元素集合作为一个大小为 $n$ 的反链，所以得到最大反链是 $n$，最大匹配是 $n$，充分性证明，霍尔定理得证。</p>
+<h5 id="鸽笼原理"><a href="#鸽笼原理" class="headerlink" title="鸽笼原理"></a>鸽笼原理</h5><p>我们之前证明过 $mn+1$ 的序列要么存在 $m+1$ 的不降序列，要么存在 $n+1$ 的降序列。现在用这个定理可以方便的证明。我们在 $a_i\le a_j(i&lt;j)$ 的 $i,j$ 之间连边，否则不连。那么不降序列就是一个链，降序列就是一个反链。而最小的不降序列覆盖和反链大小相等。而如果反链大小 $\gt n$，直接成立。否则，我们要用 $\le n$ 个序列覆盖 $nm+1$，根据鸽笼原理一定会有一个序列超过 $m$。也就得证。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://marine-reptile.github.io">marine_reptile</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://marine-reptile.github.io/note/note002/">http://marine-reptile.github.io/note/note002/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://marine-reptile.github.io" target="_blank">Marine-Reptile</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/note/note003/" title="“计算理论之美”课程笔记一"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">“计算理论之美”课程笔记一</div></div><div class="info-2"><div class="info-item-1">一、概率介绍：$k-sat$$k-sat$ 问题： 输入一系列条件，每个子句得到 恰好 $k$个子条件，对于每个条件，至少有一个子条件必须得到满足。每个子条件都要求你使一个特定的布尔值为真或为假。  判断在 $n$ 个布尔变量下，所有的约束条件是否都能得到满足。   我们可以用 Conjunctive Normal Form（CNF） 来描述一个 $k-sat$问题： $$\Phi&#x3D;(x_1\vee x_2\vee \neg x_4)\wedge(\neg x_2\vee x_3 \vee x_4)\wedge\cdots \wedge(x_6\vee x_8\vee x_9) $$ 这里的例子是一个 $3-sat$，这意味着每个条件有三个变量。如果我们能使 $\Phi$ 等于 $1$，那么它就是可满足的。否则，它就不成立。 我们都知道我们可以在 $O(n+m)$ 内解决 $2-sat$ 问题，其中 $n$ 是布尔变量的数量，$m$ 是条款的数量。 我们也知道一般的 $k-sat (k\ge 3)$ 是 $NP-hard$。但让我们看看一些特殊情况，这些情况有简单的方法...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">marine_reptile</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/marine-reptile"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="/h" target="_blank" title=""><i></i></a><a class="social-icon" href="/t" target="_blank" title=""><i class="1"></i></a><a class="social-icon" href="/t" target="_blank" title=""><i class="2"></i></a><a class="social-icon" href="/p" target="_blank" title=""><i class="3"></i></a><a class="social-icon" href="/s" target="_blank" title=""><i class="4"></i></a><a class="social-icon" href="/" target="_blank" title=""><i class="5"></i></a><a class="social-icon" href="/" target="_blank" title=""><i class="6"></i></a><a class="social-icon" href="/g" target="_blank" title=""><i class="7"></i></a><a class="social-icon" href="/i" target="_blank" title=""><i class="8"></i></a><a class="social-icon" href="/t" target="_blank" title=""><i class="9"></i></a><a class="social-icon" href="/h" target="_blank" title=""><i class="10"></i></a><a class="social-icon" href="/u" target="_blank" title=""><i class="11"></i></a><a class="social-icon" href="/b" target="_blank" title=""><i class="12"></i></a><a class="social-icon" href="/." target="_blank" title=""><i class="13"></i></a><a class="social-icon" href="/c" target="_blank" title=""><i class="14"></i></a><a class="social-icon" href="/o" target="_blank" title=""><i class="15"></i></a><a class="social-icon" href="/m" target="_blank" title=""><i class="16"></i></a><a class="social-icon" href="/" target="_blank" title=""><i class="17"></i></a><a class="social-icon" href="/m" target="_blank" title=""><i class="18"></i></a><a class="social-icon" href="/a" target="_blank" title=""><i class="19"></i></a><a class="social-icon" href="/r" target="_blank" title=""><i class="20"></i></a><a class="social-icon" href="/i" target="_blank" title=""><i class="21"></i></a><a class="social-icon" href="/n" target="_blank" title=""><i class="22"></i></a><a class="social-icon" href="/e" target="_blank" title=""><i class="23"></i></a><a class="social-icon" href="/-" target="_blank" title=""><i class="24"></i></a><a class="social-icon" href="/r" target="_blank" title=""><i class="25"></i></a><a class="social-icon" href="/e" target="_blank" title=""><i class="26"></i></a><a class="social-icon" href="/p" target="_blank" title=""><i class="27"></i></a><a class="social-icon" href="/t" target="_blank" title=""><i class="28"></i></a><a class="social-icon" href="/i" target="_blank" title=""><i class="29"></i></a><a class="social-icon" href="/l" target="_blank" title=""><i class="30"></i></a><a class="social-icon" href="/e" target="_blank" title=""><i class="31"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E6%A1%86%E6%9E%B6"><span class="toc-number">1.</span> <span class="toc-text">一、组合数学知识框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">组合计数问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E5%AD%98%E5%9C%A8%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">组合存在性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%81%E5%80%BC%E7%BB%84%E5%90%88%E5%AD%A6"><span class="toc-number">1.2.1.</span> <span class="toc-text">极值组合学</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%89%E5%A7%86%E5%A1%9E%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.2.</span> <span class="toc-text">拉姆塞问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.</span> <span class="toc-text">组合设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E4%BC%98%E5%8C%96"><span class="toc-number">1.4.</span> <span class="toc-text">组合优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8D%81%E4%BA%8C%E9%87%8D%E8%AE%A1%E6%95%B0%E6%B3%95%EF%BC%88%E5%88%9D%E7%AD%89%E8%AE%A1%E6%95%B0%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">二、十二重计数法（初等计数）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E5%85%AC%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">计数公理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%A0%E5%B0%84%E6%B3%95%E5%88%99"><span class="toc-number">2.1.1.</span> <span class="toc-text">映射法则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%98%E6%B3%95%E6%B3%95%E5%88%99"><span class="toc-number">2.1.2.</span> <span class="toc-text">乘法法则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E6%B3%95%E6%B3%95%E5%88%99"><span class="toc-number">2.1.3.</span> <span class="toc-text">加法法则</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">组合数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E9%9B%86%E6%80%BB%E6%95%B0"><span class="toc-number">2.2.1.</span> <span class="toc-text">子集总数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E9%9B%86"><span class="toc-number">2.2.2.</span> <span class="toc-text">子集</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E9%87%8D%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">十二重计数法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#text-I-Tuples"><span class="toc-number">2.3.1.</span> <span class="toc-text">$\text{I: Tuples}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-II-Permutation"><span class="toc-number">2.3.2.</span> <span class="toc-text">$\text{II: Permutation}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-III-Stirling"><span class="toc-number">2.3.3.</span> <span class="toc-text">$\text{III: Stirling}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-IV-weak-k-composition"><span class="toc-number">2.3.4.</span> <span class="toc-text">$\text{IV: weak k-composition}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-V-Binom"><span class="toc-number">2.3.5.</span> <span class="toc-text">$\text{V: Binom}$</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="toc-number">2.3.5.1.</span> <span class="toc-text">二项式定理</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-VI-composition"><span class="toc-number">2.3.6.</span> <span class="toc-text">$\text{VI: composition}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-VII-Stirling"><span class="toc-number">2.3.7.</span> <span class="toc-text">$\text{VII: Stirling}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-VIII-Ordin"><span class="toc-number">2.3.8.</span> <span class="toc-text">$\text{VIII: Ordin}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-IX-Stirling"><span class="toc-number">2.3.9.</span> <span class="toc-text">$\text{IX: Stirling}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-X-GF"><span class="toc-number">2.3.10.</span> <span class="toc-text">$\text{X: GF}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-XI-Ordinary"><span class="toc-number">2.3.11.</span> <span class="toc-text">$\text{XI: Ordinary}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-XII-GF"><span class="toc-number">2.3.12.</span> <span class="toc-text">$\text{XII: GF}$</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%9A%84%E5%85%B6%E4%BB%96%E8%AE%A1%E6%95%B0"><span class="toc-number">2.4.</span> <span class="toc-text">相关的其他计数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E9%87%8D%E9%9B%86%E7%9A%84-k-%E5%85%83%E5%AD%90%E9%9B%86"><span class="toc-number">2.4.1.</span> <span class="toc-text">可重集的 $k$ 元子集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%B3%BB%E6%95%B0"><span class="toc-number">2.4.2.</span> <span class="toc-text">多项式系数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">三、生成函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F"><span class="toc-number">3.1.</span> <span class="toc-text">序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathfrak-Generating-Function"><span class="toc-number">4.</span> <span class="toc-text">$ \mathfrak{Generating Function}$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E6%89%80%E8%95%B4%E5%90%AB%E7%9A%84%E6%80%9D%E6%83%B3"><span class="toc-number">4.1.</span> <span class="toc-text">生成函数所蕴含的思想</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#text-Double-Deck-%E9%97%AE%E9%A2%98"><span class="toc-number">4.1.1.</span> <span class="toc-text">$\text{Double Deck}$ 问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="toc-number">4.2.</span> <span class="toc-text">普通生成函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0"><span class="toc-number">4.2.1.</span> <span class="toc-text">抽象代数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90"><span class="toc-number">4.2.2.</span> <span class="toc-text">数学分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%90%E7%AE%97"><span class="toc-number">4.2.3.</span> <span class="toc-text">生成函数的运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A0%E6%B3%95"><span class="toc-number">4.2.3.1.</span> <span class="toc-text">加法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B9%98%E6%B3%95"><span class="toc-number">4.2.3.2.</span> <span class="toc-text">乘法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E7%BA%A7%E6%95%B0"><span class="toc-number">4.2.3.3.</span> <span class="toc-text">几何级数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BE%AE%E5%88%86"><span class="toc-number">4.2.3.4.</span> <span class="toc-text">微分</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%B0%E5%8B%92%E5%B1%95%E5%BC%80"><span class="toc-number">4.2.3.5.</span> <span class="toc-text">泰勒展开</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E8%A7%A3%E5%86%B3%E7%BB%84%E5%90%88%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98"><span class="toc-number">4.3.</span> <span class="toc-text">使用生成函数解决组合计数问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#text-multiset-%E9%97%AE%E9%A2%98"><span class="toc-number">4.3.1.</span> <span class="toc-text">$\text{multiset}$ 问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97"><span class="toc-number">4.3.2.</span> <span class="toc-text">斐波那契数列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0"><span class="toc-number">4.3.3.</span> <span class="toc-text">卡特兰数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%9A%E8%BE%B9%E5%BD%A2%E7%9A%84%E4%B8%89%E8%A7%92%E5%BD%A2%E5%88%92%E5%88%86"><span class="toc-number">4.3.3.1.</span> <span class="toc-text">多边形的三角形划分</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E7%9A%84%E5%B9%B3%E5%9D%87%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">4.3.4.</span> <span class="toc-text">快速排序的平均复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Ex%EF%BC%9A%E4%B8%80%E9%98%B6%E7%BA%BF%E6%80%A7%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E9%80%9A%E8%A7%A3%E5%85%AC%E5%BC%8F%E8%AF%81%E6%98%8E"><span class="toc-number">4.3.4.1.</span> <span class="toc-text">Ex：一阶线性常微分方程通解公式证明</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">四、容斥原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86"><span class="toc-number">5.1.</span> <span class="toc-text">容斥原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">5.1.1.</span> <span class="toc-text">容斥原理的证明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%E5%92%8C%E9%9B%86%E5%90%88%E5%88%92%E5%88%86"><span class="toc-number">5.1.2.</span> <span class="toc-text">容斥原理和集合划分</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%E7%9A%84%E4%BC%98%E5%8A%BF%E5%92%8C%E5%8A%A3%E5%8A%BF"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">容斥原理的优势和劣势</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%99%E6%8E%92%E9%97%AE%E9%A2%98"><span class="toc-number">5.1.3.</span> <span class="toc-text">错排问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E5%92%8C%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86"><span class="toc-number">5.1.3.1.</span> <span class="toc-text">生成函数和容斥原理</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E5%85%B0%E8%A5%BF%E6%99%9A%E5%AE%B4"><span class="toc-number">5.1.4.</span> <span class="toc-text">法兰西晚宴</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E6%BC%94"><span class="toc-number">5.2.</span> <span class="toc-text">反演</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%8F%8D%E6%BC%94"><span class="toc-number">5.3.</span> <span class="toc-text">二项式反演</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%BD%A2%E5%BC%8F"><span class="toc-number">5.3.1.</span> <span class="toc-text">其他形式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94"><span class="toc-number">5.4.</span> <span class="toc-text">莫比乌斯反演</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%9B%BE%E7%9A%84%E5%8C%B9%E9%85%8D"><span class="toc-number">6.</span> <span class="toc-text">五、图的匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D%E5%92%8C%E9%9C%8D%E5%B0%94%E5%AE%9A%E7%90%86"><span class="toc-number">6.1.</span> <span class="toc-text">二分图匹配和霍尔定理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%BC%82%E4%BB%A3%E8%A1%A8%E7%B3%BB"><span class="toc-number">6.1.1.</span> <span class="toc-text">相异代表系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%8D%E5%B0%94%E5%AE%9A%E7%90%86"><span class="toc-number">6.1.2.</span> <span class="toc-text">霍尔定理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95"><span class="toc-number">6.1.3.</span> <span class="toc-text">数学归纳法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E5%AF%B9%E5%81%B6%E7%8E%B0%E8%B1%A1"><span class="toc-number">6.2.</span> <span class="toc-text">原始对偶现象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E5%9B%BE%E6%9C%80%E5%A4%A7%E5%8C%B9%E9%85%8D-%E4%BA%8C%E5%88%86%E5%9B%BE%E6%9C%80%E5%B0%8F%E7%82%B9%E8%A6%86%E7%9B%96"><span class="toc-number">6.2.1.</span> <span class="toc-text">二分图最大匹配&#x3D;二分图最小点覆盖</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%BD%A2%E5%BC%8F"><span class="toc-number">6.2.1.1.</span> <span class="toc-text">矩阵形式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%81%E6%98%8E"><span class="toc-number">6.2.1.2.</span> <span class="toc-text">证明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B9%B3%E9%9D%A2%E5%9B%BE"><span class="toc-number">6.2.1.3.</span> <span class="toc-text">平面图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%8F%E5%BA%8F%E9%9B%86%E6%9C%80%E5%A4%A7%E5%8F%8D%E9%93%BE-%E5%81%8F%E5%BA%8F%E9%9B%86%E6%9C%80%E5%B0%8F%E9%93%BE%E8%A6%86%E7%9B%96"><span class="toc-number">6.2.2.</span> <span class="toc-text">偏序集最大反链&#x3D;偏序集最小链覆盖</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9C%8D%E5%B0%94%E5%AE%9A%E7%90%86-1"><span class="toc-number">6.2.2.1.</span> <span class="toc-text">霍尔定理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%B8%BD%E7%AC%BC%E5%8E%9F%E7%90%86"><span class="toc-number">6.2.2.2.</span> <span class="toc-text">鸽笼原理</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/code/note001/" title="欧拉五边形定理">欧拉五边形定理</a><time datetime="2026-03-01T16:00:00.000Z" title="发表于 2026-03-02 00:00:00">2026-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/note/note001/" title="欧拉五边形定理">欧拉五边形定理</a><time datetime="2026-03-01T16:00:00.000Z" title="发表于 2026-03-02 00:00:00">2026-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/note/note003/" title="“计算理论之美”课程笔记一">“计算理论之美”课程笔记一</a><time datetime="2026-03-01T16:00:00.000Z" title="发表于 2026-03-02 00:00:00">2026-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/note/note002/" title="组合数学课程笔记">组合数学课程笔记</a><time datetime="2026-03-01T16:00:00.000Z" title="发表于 2026-03-02 00:00:00">2026-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/flower/flower012-blood/" title="鲜血淋漓">鲜血淋漓</a><time datetime="2026-02-13T16:00:00.000Z" title="发表于 2026-02-14 00:00:00">2026-02-14</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/background.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By marine_reptile</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3-b2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3-b2"></script><script src="/js/main.js?v=5.5.3-b2"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

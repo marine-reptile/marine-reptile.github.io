@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>欧拉五边形定理 | Marine-Reptile</title><meta name="author" content="marine_reptile"><meta name="copyright" content="marine_reptile"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="欧拉证明欧拉五边形定理的内容： $$\prod_{n\ge 1}{(1-x^n)}&#x3D;\sum_{n\ge 0}{(-1)^n x^{n(3n\pm 1)&#x2F;2}}$$ 我们介绍欧拉的证明方法。 $$(1-a_1)(1-a_2)\cdots (1-a_n)&#x3D;(1-a_1)(1-a_2)\cdots (1-a_{n-1})-a_n(1-a_1)(1-a_2)\cdots (">
+<meta property="og:type" content="article">
+<meta property="og:title" content="欧拉五边形定理">
+<meta property="og:url" content="http://marine-reptile.github.io/note/note001/index.html">
+<meta property="og:site_name" content="Marine-Reptile">
+<meta property="og:description" content="欧拉证明欧拉五边形定理的内容： $$\prod_{n\ge 1}{(1-x^n)}&#x3D;\sum_{n\ge 0}{(-1)^n x^{n(3n\pm 1)&#x2F;2}}$$ 我们介绍欧拉的证明方法。 $$(1-a_1)(1-a_2)\cdots (1-a_n)&#x3D;(1-a_1)(1-a_2)\cdots (1-a_{n-1})-a_n(1-a_1)(1-a_2)\cdots (">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://marine-reptile.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2026-03-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-01T16:06:54.427Z">
+<meta property="article:author" content="marine_reptile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://marine-reptile.github.io/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "欧拉五边形定理",
+  "url": "http://marine-reptile.github.io/note/note001/",
+  "image": "http://marine-reptile.github.io/img/avatar.jpg",
+  "datePublished": "2026-03-01T16:00:00.000Z",
+  "dateModified": "2026-03-01T16:06:54.427Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "marine_reptile",
+      "url": "http://marine-reptile.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://marine-reptile.github.io/note/note001/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3-b2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '欧拉五边形定理',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Marine-Reptile</span></a><a class="nav-page-title" href="/"><span class="site-name">欧拉五边形定理</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> categories</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">欧拉五边形定理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-01T16:00:00.000Z" title="发表于 2026-03-02 00:00:00">2026-03-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-01T16:06:54.427Z" title="更新于 2026-03-02 00:06:54">2026-03-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h4 id="欧拉证明"><a href="#欧拉证明" class="headerlink" title="欧拉证明"></a>欧拉证明</h4><p>欧拉五边形定理的内容：</p>
+<p>$$\prod_{n\ge 1}{(1-x^n)}&#x3D;\sum_{n\ge 0}{(-1)^n x^{n(3n\pm 1)&#x2F;2}}$$</p>
+<p>我们介绍欧拉的证明方法。</p>
+<p>$$(1-a_1)(1-a_2)\cdots (1-a_n)&#x3D;(1-a_1)(1-a_2)\cdots (1-a_{n-1})-a_n(1-a_1)(1-a_2)\cdots (1-a_{n-1})$$</p>
+<p>我们再对前面的这个进行展开</p>
+<p>$$(1-a_1)(1-a_2)\cdots (1-a_n)&#x3D;(1-a_1)(1-a_2)\cdots (1-a_{n-2})-a_{n-1}(1-a_1)(1-a_2)\cdots (1-a_{n-2})-a_n(1-a_1)(1-a_2)\cdots (1-a_{n-1})$$</p>
+<p>最终，我们把前 $n$ 项全部展开</p>
+<p>$$(1-a_1)(1-a_2)\cdots (1-a_n)&#x3D;1-a_1-a_2(1-a_1)-a_3(1-a_1)(1-a_2)\cdots -a_n(1-a_1)(1-a_2)\cdots(1-a_{n-1})$$</p>
+<p>得到一般形式。然后，我们令 $a_k&#x3D;x^k$。因为我们可以对于任意的 $N$ 都只考虑左边 $(1-x^{N+1})$之前的项和右边 $x^{N+1}(\cdots)$ 之前的项。所以此公式可以推向到无穷项。即</p>
+<p>$$(1-x)(1-x^2)\cdots(1-x^n)\cdots&#x3D;1-x-x^2(1-x)\cdots-x^n(1-x)\cdots(1-x^{n-1})-\cdots$$</p>
+<p>然后我们令 $P_0&#x3D;(1-x)(1-x^2)\cdots(1-x^n)$，把 $x^2$ 以后的项提出 $-x^2$ 令为 $P_1$</p>
+<p>$$P_1&#x3D;1-x+x(1-x^2)\cdots+x^n(1-x)\cdots(1-x^{n+1})+\cdots$$</p>
+<p>从定义得到 $P_0&#x3D;1-x-x^2P_1$</p>
+<p>然后，定义 $Q_k&#x3D;x^k(1-x)(1-x^2)\cdots (1-x^{k+1})$</p>
+<p>则 $P_1&#x3D;Q_0+Q_1+Q_2+\cdots +Q_n+\cdots$</p>
+<p>然后定义 $A_k&#x3D;x^k(1-x^2)(1-x^3)\cdots(1-x^{k+1})$</p>
+<p>定义 $B_k&#x3D;x^{k+1}(1-x^2)(1-x^3)\cdots(1-x^{k+1})$</p>
+<p>从而有 $Q_k&#x3D;A_k-B_k$</p>
+<p>所以 $P_1&#x3D;A_0-B_0+A_1-B_1+\cdots +A_n-B_n+\cdots$</p>
+<p>我们发现我们可以裂项，因为</p>
+<p>$$A_k-B_{k-1}&#x3D;(1-x^{k+1}-1)B_{k-1}&#x3D;-x^{2k+1}(1-x^2)\cdots(1-x^{k})$$</p>
+<p>我们令 $C_k&#x3D;(1-x^2)\cdots (1-x^{k+2})$</p>
+<p>则 $A_k-B_{k-1}&#x3D;-x^{2k+1}C_{k-2}$</p>
+<p>则得到裂项结果</p>
+<p>$P_1&#x3D;A_0-B_0+A_1+(-B_1+A_2)+(-B_2+A_3)+\cdots +(-B_{k-1}+A_k)+\cdots$</p>
+<p>即 $P_1&#x3D;1-x+x(1-x^2)-x^5C_0-x^7C_1-\cdots-x^{2k+5}C_k-\cdots$</p>
+<p>我们进行相似的操作，把 $x^5$ 之后的项的 $-x^5$ 提出来令为 $P_2$</p>
+<p>则 $P_2&#x3D;C_0+x^2C_1+x^4C_2+\cdots+x^{2k}C_k+\cdots$</p>
+<p>同时 $P_1&#x3D;1-x^3-x^5P_2$</p>
+<p>这启示我们可以尝试进行归纳。</p>
+<p>我们定义 $P_n&#x3D;1-x^n+x^n(1-x^n)(1-x^{n+1})+x^{2n}(1-x^n)(1-x^{n+2})+\cdots$</p>
+<p>那么我们令 $Q_k&#x3D;x^{nk}(1-x^n)(1-x^{n+1})\cdots (1-x^{n+k})$</p>
+<p>相似的，$A_k&#x3D;x^{nk}(1-x^{n+1})\cdots (1-x^{n+k})$</p>
+<p>以及 $B_k&#x3D;x^{n(k+1)}(1-x^{n+1})\cdots (1-x^{n+k})$</p>
+<p>则 $Q_k&#x3D;A_k-B_k$</p>
+<p>考虑 $A_k-B_{k-1}&#x3D;x^{nk}(1-x^{n+1})\cdots(1-x^{n+k-1})(1-x^{n+k}-1)$</p>
+<p>令 $C_k&#x3D;(1-x^{n+1})\cdots(1-x^{n+k+1})$</p>
+<p>则 $A_k-B_{k-1}&#x3D;x^{nk+n+k}C_{k-2}$</p>
+<p>因为 $nk+k+n&#x3D;(n+1)(k-2)+3n+2$</p>
+<p>$$P_n&#x3D;A_0-B_0+A_1-x^{3n+2}(C_0+x^{n+1}C_1+x^{2(n+1)}C_2+\cdots)$$</p>
+<p>我们发现 $A_0-B_0+A_1&#x3D;1-x^n+x^n(1-x^{n+1})&#x3D;1-x^{2n+1}$</p>
+<p>展开后面的部分中的 $C$ 得到</p>
+<p>$$1-x^{n+1}+x^{n+1}(1-x^{n+1})(1-x^{n+2})+x^{2(n+1)}(1-x^{n+1})(1-x^{n+2})(1-x^{n+3})+\cdots$$</p>
+<p>这恰好就是 $P_{n+1}$ 的定义。</p>
+<p>所以，$P_n&#x3D;1-x^{2n+1}-x^{3n+2}P_{n+1}$</p>
+<p>尝试展开这个递推式，因为都是乘法，我们可以直接把 $x$ 的幂次转化成指数的加法。我们发现第 $n$ 层的负的 $2n+1$ 和正的 $0$ 在最终展开式中会加上所有 $m\le n$ 的形如 $3m-1$ 的数。</p>
+<p>也就是 $2+5+\cdots+(3n-1)&#x3D;3(\sum_{k\le n}{n})-n&#x3D;\dfrac{3n(n+1)}{2}-n&#x3D;\dfrac{3n^2+n}{2}$</p>
+<p>而负的 $2n+1$ 一路下去就会变成 $-(-1)^n$ 的 $\dfrac{3n^2+n+4n+2}{2}$。如果我们用 $m&#x3D;n+1$，就是 $(-1)^mx^{m(3m-1)&#x2F;2}$，凑齐了所有的 $-$ 形式的项。</p>
+<p>正的 $0$ 一路下去就是满足形式的 $(-1)^nx^{n(3n+1)&#x2F;2}$，凑齐了所有 $+$ 形式的项。</p>
+<p>两者相加，得到 $\prod_{n\ge 1}{(1-x^n)}&#x3D;\sum_{n\ge 0}{(-1)^n x^{n(3n\pm 1)&#x2F;2}}$</p>
+<p>证毕</p>
+<h4 id="高斯证明"><a href="#高斯证明" class="headerlink" title="高斯证明"></a>高斯证明</h4><p>欧拉五边形定理的内容：</p>
+<p>$$\prod_{n\ge 1}{(1-x^n)}&#x3D;\sum_{n\ge 0}{(-1)^n x^{n(3n\pm 1)&#x2F;2}}$$</p>
+<p>我们来介绍高斯的证法<br>考虑下面这个无穷积</p>
+<p>$$F(z)&#x3D;(1+x^1z)(1+x^1z^{-1})(1+x^3z)(1+x^3z^{-1})\cdots (1+x^{2n+1}z)(1+x^{2n+1}z^{-1})\cdots$$</p>
+<p>我们考虑将 $F(z)$ 表示为 </p>
+<p>$$A_0(x)+A_1(x)(z+z^{-1})+A_2(x)(z^2+z^{-2})+\cdots+A_n(z^n+z^{-n})+\cdots$$</p>
+<p>然后我们考虑 $F(x^2z)$</p>
+<p>$$F(x^2z)&#x3D;(1+x^3z)(1+x^{-1}z^{-1})(1+x^5z)(1+x^{1}z^{-1})\cdots$$</p>
+<p>观察发现，对比 $F(z)$，$F(x^2z)$ 唯一的不同在于多了一个 $1+x^{-1}z^{-1}$，少了一个 $1+xz$</p>
+<p>那么 $F(x^2z)(1+xz)&#x3D;(1+x^{-1}z^{-1})F(z)$</p>
+<p>因为 $\dfrac{1+xz}{1+x^{-1}z^{-1}}&#x3D;\dfrac{xz+x^2z^2}{xz+1}&#x3D;xz$</p>
+<p>所以 $F(x^2z)xz&#x3D;F(z)$</p>
+<p>$$(A_0(x)+A_1(x)(x^2z+(x^2z)^{-1})+A_2(x)((x^2z)^2+(x^2z)^{-2})+\cdots)xz&#x3D;A_0(x)+A_1(x)(z+z^{-1})+A_2(x)(z^2+z^{-2})+\cdots$$</p>
+<p>我们考虑 $z^r$ 的系数，我们发现，左边 $z^r$ 的系数是 $A_{r-1}(x)x^{2r-1}$，右边是 $A_r(x)$</p>
+<p>所以 $A_{r-1}(x)x^{2r-1}&#x3D;A_r(x)$</p>
+<p>这个数列的通项是容易的，$A_r(x)&#x3D;A_0(x)\prod_{k\le r} x^{2k-1}&#x3D;A_0(x)x^{r^2}$</p>
+<p>但是我们发现我们并不知道 $A_0(x)$，考虑在有限级数</p>
+<p>$$f(z)&#x3D;(1+x^1z)(1+x^1z^{-1})(1+x^3z)(1+x^3z^{-1})\cdots (1+x^{2n-1}z)(1+x^{2n-1}z^{-1})$$</p>
+<p>中求出 $A_0(x)$</p>
+<p>为了区分有限的 $f$ 和无限的 $F$，令</p>
+<p>$$f(z)&#x3D;a_0(x)+a_1(x)(z+z^{-1})+a_2(x)(z^2+z^{-2})+\cdots+a_n(z^n+z^{-n})+\cdots$$</p>
+<p>我们利用和原先相似的研究方法，展开 $f(x^2z)$</p>
+<p>$$f(x^2z)&#x3D;(1+x^3z)(1+x^{-1}z^{-1})(1+x^5z)(1+x^{1}z^{-1})\cdots(1+x^{2n+1}z)(1+x^{2n-3}z^{-1})$$</p>
+<p>我们发现，这次我们不仅前面少了 $1+xz$，多了 $1+x^{-1}z^{-1}$，后面也少了 $1+x^{2n-1}z^{-1}$，多了 $1+x^{2n+1}z$</p>
+<p>我们可以直接把前面的变成多出了 $xz$，则</p>
+<p>$$xz(1+x^{2n-1}z^{-1})f(x^2z)&#x3D;(1+x^{2n+1}z)f(z)$$</p>
+<p>$$(xz+x^{2n})f(x^2z)&#x3D;(1+x^{2n+1}z)f(z)$$</p>
+<p>得到</p>
+<p>$$(\cdots+a_n(x)((x^2z)^n+(x^2z)^{-n}))(xz+x^{2n})&#x3D;(\cdots+a_n(x)(z^n+z^{-n}))(1+x^{2n+1}z)$$</p>
+<p>我们还是研究 $z^r$ 的系数，在左边是 $x^{2r-1}a_{r-1}(x)+x^{2r+2n}a_r(x)$，在右边是 $x^{2n+1}a_{r-1}(x)+a_r(x)$</p>
+<p>因此 $x^{2r-1}a_{r-1}(x)+x^{2r+2n}a_r(x)&#x3D;x^{2n+1}a_{r-1}(x)+a_r(x)$</p>
+<p>$$x^{2r-1}a_{r-1}(x)-x^{2n+1}a_{r-1}(x)&#x3D;a_r(x)-x^{2r+2n}a_r(x)$$</p>
+<p>$$x^{2r-1}(1-x^{2n-2r+2})a_{r-1}(x)&#x3D;(1-x^{2n+2r})a_r(x)$$</p>
+<p>因此 $a_r(x)&#x3D;a_{r-1}(x)\dfrac{x^{2r-1}(1-x^{2n-2r+2})}{1-x^{2n+2r}}$</p>
+<p>这个公式的通项也是容易的</p>
+<p>$$a_r(x)&#x3D;a_{0}(x)x^{r^2}\dfrac{(1-x^{2n})\cdots(1-x^{2n-2r+2})}{(1-x^{2n+2r})\cdots(1-x^{2n+2})}$$</p>
+<p>但是，因为是有限的数列，我们已经知道 $a_n(x)&#x3D;x^1x^3x^5\cdots x^{2n-1}&#x3D;x^{r^2}$</p>
+<p>所以，我们倒推出 $a_0(x)&#x3D;\dfrac{(1-x^{4n})\cdots(1-x^{2n+2})}{(1-x^{2n})\cdots(1-x^{2})}$</p>
+<p>然后，对于任意大的 $N$，我们都可以只考虑 $x^N$ 以内的项，所以 </p>
+<p>$A_0(x)&#x3D;\dfrac{1}{(1-x^{2})(1-x^{4})\cdots(1-x^{2n})\cdots}$</p>
+<p>$$(1+x^1z)(1+x^1z^{-1})\cdots (1+x^{2n+1}z)(1+x^{2n+1}z^{-1})\cdots&#x3D;A_0(x)+A_1(x)(z+z^{-1})+\cdots+A_n(z^n+z^{-n})+\cdots$$</p>
+<p>然后我们把所有的 $A_n(x)$ 全部替换成 $x^{n^2}A_0(x)$，然后把 $(1-x^{2})(1-x^{4})\cdots(1-x^{2n})\cdots$ 移项到左边，得到</p>
+<p>$(1+x^1z)(1+x^1z^{-1})(1-x^2)(1+x^3z)(1+x^3z^{-1})(1-x^4)\cdots (1+x^{2n-1}z)(1+x^{2n-1}z^{-1})(1-x^{2n})\cdots$</p>
+<p>所以</p>
+<p>$\prod(1+x^{2n-1}z)(1+x^{2n-1}z^{-1})(1-x^{2n})&#x3D;1+x(z+z^{-1})+\cdots+x^{n^2}(z^n+z^{-n})+\cdots$</p>
+<p>现在我们如果令 $x&#x3D;y^{3},z&#x3D;-y$，那么左边就变成（注：这里不直接开根号是为了避免虚数的讨论）</p>
+<p>$$\prod(1-y^{6n-2})(1-y^{6n-4})(1-y^{2n})$$</p>
+<p>右边就变成 $1-y^3(y+y^{-1})+\cdots+(-1)^ny^{3n^2}(y^n+y^{-n})$</p>
+<p>将其打开，就是 $1-y^4-y^2+\cdots+(-1)^ny^{3n^2+n}+(-1)^ny^{3n^2-n}$</p>
+<p>而我们令 $t&#x3D;\sqrt{y}$</p>
+<p>左边就是 $\prod_{n\ge 1}{(1-t^n)}$（凑齐了模 $3$ 的剩余系），右边就是 $\sum_{n\ge 0}{(-1)^n t^{n(3n\pm 1)&#x2F;2}}$</p>
+<p>$$\prod_{n\ge 1}{(1-x^n)}&#x3D;\sum_{n\ge 0}{(-1)^n x^{n(3n\pm 1)&#x2F;2}}$$</p>
+<p>证毕</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://marine-reptile.github.io">marine_reptile</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://marine-reptile.github.io/note/note001/">http://marine-reptile.github.io/note/note001/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://marine-reptile.github.io" target="_blank">Marine-Reptile</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/note/note003/" title="“计算理论之美”课程笔记一"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">“计算理论之美”课程笔记一</div></div><div class="info-2"><div class="info-item-1">一、概率介绍：$k-sat$$k-sat$ 问题： 输入一系列条件，每个子句得到 恰好 $k$个子条件，对于每个条件，至少有一个子条件必须得到满足。每个子条件都要求你使一个特定的布尔值为真或为假。  判断在 $n$ 个布尔变量下，所有的约束条件是否都能得到满足。   我们可以用 Conjunctive Normal Form（CNF） 来描述一个 $k-sat$问题： $$\Phi&#x3D;(x_1\vee x_2\vee \neg x_4)\wedge(\neg x_2\vee x_3 \vee x_4)\wedge\cdots \wedge(x_6\vee x_8\vee x_9) $$ 这里的例子是一个 $3-sat$，这意味着每个条件有三个变量。如果我们能使 $\Phi$ 等于 $1$，那么它就是可满足的。否则，它就不成立。 我们都知道我们可以在 $O(n+m)$ 内解决 $2-sat$ 问题，其中 $n$ 是布尔变量的数量，$m$ 是条款的数量。 我们也知道一般的 $k-sat (k\ge 3)$ 是 $NP-hard$。但让我们看看一些特殊情况，这些情况有简单的方法...</div></div></div></a><a class="pagination-related" href="/code/note001/" title="欧拉五边形定理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">欧拉五边形定理</div></div><div class="info-2"><div class="info-item-1">欧拉证明欧拉五边形定理的内容： $$\prod_{n\ge 1}{(1-x^n)}&#x3D;\sum_{n\ge 0}{(-1)^n x^{n(3n\pm 1)&#x2F;2}}$$ 我们介绍欧拉的证明方法。 $$(1-a_1)(1-a_2)\cdots (1-a_n)&#x3D;(1-a_1)(1-a_2)\cdots (1-a_{n-1})-a_n(1-a_1)(1-a_2)\cdots (1-a_{n-1})$$ 我们再对前面的这个进行展开 $$(1-a_1)(1-a_2)\cdots (1-a_n)&#x3D;(1-a_1)(1-a_2)\cdots (1-a_{n-2})-a_{n-1}(1-a_1)(1-a_2)\cdots (1-a_{n-2})-a_n(1-a_1)(1-a_2)\cdots (1-a_{n-1})$$ 最终，我们把前 $n$ 项全部展开 $$(1-a_1)(1-a_2)\cdots (1-a_n)&#x3D;1-a_1-a_2(1-a_1)-a_3(1-a_1)(1-a_2)\cdots -a_n(1-a_1)(1-a_2)\cdots(1-a...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">marine_reptile</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/marine-reptile"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="/h" target="_blank" title=""><i></i></a><a class="social-icon" href="/t" target="_blank" title=""><i class="1"></i></a><a class="social-icon" href="/t" target="_blank" title=""><i class="2"></i></a><a class="social-icon" href="/p" target="_blank" title=""><i class="3"></i></a><a class="social-icon" href="/s" target="_blank" title=""><i class="4"></i></a><a class="social-icon" href="/" target="_blank" title=""><i class="5"></i></a><a class="social-icon" href="/" target="_blank" title=""><i class="6"></i></a><a class="social-icon" href="/g" target="_blank" title=""><i class="7"></i></a><a class="social-icon" href="/i" target="_blank" title=""><i class="8"></i></a><a class="social-icon" href="/t" target="_blank" title=""><i class="9"></i></a><a class="social-icon" href="/h" target="_blank" title=""><i class="10"></i></a><a class="social-icon" href="/u" target="_blank" title=""><i class="11"></i></a><a class="social-icon" href="/b" target="_blank" title=""><i class="12"></i></a><a class="social-icon" href="/." target="_blank" title=""><i class="13"></i></a><a class="social-icon" href="/c" target="_blank" title=""><i class="14"></i></a><a class="social-icon" href="/o" target="_blank" title=""><i class="15"></i></a><a class="social-icon" href="/m" target="_blank" title=""><i class="16"></i></a><a class="social-icon" href="/" target="_blank" title=""><i class="17"></i></a><a class="social-icon" href="/m" target="_blank" title=""><i class="18"></i></a><a class="social-icon" href="/a" target="_blank" title=""><i class="19"></i></a><a class="social-icon" href="/r" target="_blank" title=""><i class="20"></i></a><a class="social-icon" href="/i" target="_blank" title=""><i class="21"></i></a><a class="social-icon" href="/n" target="_blank" title=""><i class="22"></i></a><a class="social-icon" href="/e" target="_blank" title=""><i class="23"></i></a><a class="social-icon" href="/-" target="_blank" title=""><i class="24"></i></a><a class="social-icon" href="/r" target="_blank" title=""><i class="25"></i></a><a class="social-icon" href="/e" target="_blank" title=""><i class="26"></i></a><a class="social-icon" href="/p" target="_blank" title=""><i class="27"></i></a><a class="social-icon" href="/t" target="_blank" title=""><i class="28"></i></a><a class="social-icon" href="/i" target="_blank" title=""><i class="29"></i></a><a class="social-icon" href="/l" target="_blank" title=""><i class="30"></i></a><a class="social-icon" href="/e" target="_blank" title=""><i class="31"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E8%AF%81%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">欧拉证明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E6%96%AF%E8%AF%81%E6%98%8E"><span class="toc-number">2.</span> <span class="toc-text">高斯证明</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/code/note001/" title="欧拉五边形定理">欧拉五边形定理</a><time datetime="2026-03-01T16:00:00.000Z" title="发表于 2026-03-02 00:00:00">2026-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/note/note001/" title="欧拉五边形定理">欧拉五边形定理</a><time datetime="2026-03-01T16:00:00.000Z" title="发表于 2026-03-02 00:00:00">2026-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/note/note003/" title="“计算理论之美”课程笔记一">“计算理论之美”课程笔记一</a><time datetime="2026-03-01T16:00:00.000Z" title="发表于 2026-03-02 00:00:00">2026-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/note/note002/" title="组合数学课程笔记">组合数学课程笔记</a><time datetime="2026-03-01T16:00:00.000Z" title="发表于 2026-03-02 00:00:00">2026-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/flower/flower012-blood/" title="鲜血淋漓">鲜血淋漓</a><time datetime="2026-02-13T16:00:00.000Z" title="发表于 2026-02-14 00:00:00">2026-02-14</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/background.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By marine_reptile</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3-b2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3-b2"></script><script src="/js/main.js?v=5.5.3-b2"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
